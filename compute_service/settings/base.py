@@ -103,7 +103,7 @@ ROOT_URLCONF = 'compute_service.urls'
 WSGI_APPLICATION = 'compute_service.wsgi.application'
 
 TEMPLATE_DIRS = (
-    root("assets"),
+    root("templates"),
 )
 
 DJANGO_APPS = (
