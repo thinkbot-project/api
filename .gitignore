@@ -1,3 +1,5 @@
-*.py[cod]
-*~
 /compute_service/settings/local.py
+*.py[cod]
+.DS_Store
+*~
+\#*#
