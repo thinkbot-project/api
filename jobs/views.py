@@ -16,13 +16,14 @@ def api_root(request, format=None):
         'jobs': reverse('job-list', request=request, format=format)
     })
 
-class JobHighlight(generics.SingleObjectAPIView):
+class JobResult(generics.SingleObjectAPIView):
     model = Job
     renderer_classes = (renderers.StaticHTMLRenderer,)
 
     def get(self, request, *args, **kwargs):
         job = self.get_object()
-        return Response(job.highlighted)
+        exec(job.code)
+        return Response(job)
 
 class JobList(generics.ListCreateAPIView):
     model = Job
