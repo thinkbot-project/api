@@ -41,8 +41,8 @@
 8. sudo apt-get install python-virtualenv\
 	mkdir ~/venv/\
 	cd venv\
-	virtualenv thinkbot.net --distribute\
-	source thinkbot.net/bin/activate\
+	virtualenv venv --distribute\
+	source venv/bin/activate\
 	pip install django\
 	cd ~/sites\
 	django-admin.py startproject thinkbot\
@@ -105,7 +105,8 @@ sudo ln -s ../apps-available/thinkbot.net.ini .\
 \
 11. \
 \
-\
+rm ~/sites/thinkbot.net/venv/lib/python2.7/no-global-site-packages.txt \
+(venv)ubuntu@ip-10-68-99-207:~/sites/thinkbot.net/compute_service/sandbox/fenics\
 \
 \
 \
