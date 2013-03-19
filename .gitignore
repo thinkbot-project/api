@@ -1,5 +1,6 @@
 /compute_service/compute_service/settings/local.py
 /venv
+/logs/nginx/*.log
 *.py[cod]
 .DS_Store
 *~

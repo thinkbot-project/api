@@ -1,0 +1,26 @@
+upstream compute_service {
+  server unix:///tmp/api.thinkbot.net.sock;
+}
+
+server {
+  listen 80;
+  server_name api.thinkbot.net;
+  access_log /home/ubuntu/sites/thinkbot.net/logs/nginx/compute_server_access.log;
+  error_log /home/ubuntu/sites/thinkbot.net/logs/nginx/compute_server_error.log;
+  charset utf-8;
+
+  client_max_body_size 75M;
+
+  location /media  {
+    alias /home/ubuntu/sites/thinkbot.net/compute_service/media;
+  }
+
+  location /static {
+    alias /home/ubuntu/sites/thinkbot.net/compute_service/static;
+  }
+
+  location / {
+    uwsgi_pass  compute_service;
+    include     /home/ubuntu/sites/thinkbot.net/config/uwsgi/uwsgi_params;
+  }
+}
