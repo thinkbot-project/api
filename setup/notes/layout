@@ -1,0 +1,9 @@
+thinkbot.net/
+  setup/
+    notes/
+    scripts/
+    config/
+  compute_service/
+  static_website/
+  venv/
+  logs/

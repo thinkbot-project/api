@@ -1,4 +1,5 @@
 /compute_service/compute_service/settings/local.py
+/venv
 *.py[cod]
 .DS_Store
 *~

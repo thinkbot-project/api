@@ -1,0 +1,26 @@
+1. Create an account on PiCloud
+2. Create a new environment using Ubuntu 12.04
+3. SSH to this environment and
+   sudo apt-get install python-software-properties
+   sudo add-apt-repository ppa:fenics-packages/fenics
+   sudo apt-get update
+   sudo apt-get install fenics
+   sudo apt-get dist-upgrade
+4. 
+
+
+Run django on app engine
+Somehow connect to Picloud and use answers
+
+export PATH=/Applications/GoogleAppEngineLauncher.app/Contents/Resources/GoogleAppEngine-default.bundle/Contents/Resources/google_appengine/lib/django-1.4/django/bin:$PATH
+
+
+Django on Heroku
+----------------
+
+mkdir foo
+cd foo
+virtualenv-2.7  venv --distribute --no-site-packages
+source venv/bin/activate
+pip install Django psycopg2 dj-database-url
+

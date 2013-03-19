@@ -1,0 +1,15 @@
+thinkbot.net layout
+-------------------
+
+# <home>		->	thinkbot.net/
+# About			->	thinkbot.net/about/
+# Blog			->	blog.thinkbot.net	(external)
+# Documentation		->	docs.thinkbot.net
+
+# Sign Up	     	->	api.thinkbot.net/signup
+# Get Started		->	thinkbot.net/start
+				(summary, plans info signup button)
+# Support		->	thinkbot.net/support
+# Terms			->	thinkbot.net/terms
+
+#© Copyright 2013 Harish Narayanan

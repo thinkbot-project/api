@@ -1,0 +1,4 @@
+virtualenv-2.7 --no-site-packages --distribute thinkbot-venv
+source thinkbot-venv/bin/activate
+django-admin.py startproject compute_service
+
