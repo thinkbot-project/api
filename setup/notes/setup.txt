@@ -1,4 +1,11 @@
-virtualenv-2.7 --no-site-packages --distribute thinkbot-venv
-source thinkbot-venv/bin/activate
-django-admin.py startproject compute_service
+virtualenv-2.7 --no-site-packages --distribute venv
+source venv/bin/activate
+pip install -r requirements.txt
+wget https://sourcesup.renater.fr/frs/download.php/2309/ScientificPython-2.8.tar.gz
+tar xzf ScientificPython-2.8.tar.gz
+cd ScientificPython-2.8
+python setup.py install
+fenics-dev
+python manage.py runserver
 
+# django-admin.py startproject compute_service
