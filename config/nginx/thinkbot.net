@@ -2,6 +2,18 @@ upstream compute_service {
     #server unix:///tmp/api.thinkbot.net.sock;
     server 127.0.0.1:8001;
 }
+
+server {
+  listen 80;
+  server_name thinkbot.net;
+  access_log /home/ubuntu/sites/thinkbot.net/logs/nginx/static_website_access.log;
+  error_log /home/ubuntu/sites/thinkbot.net/logs/nginx/static_website_error.log;
+  location / {
+    root   /home/ubuntu/sites/thinkbot.net/static_website/public;
+    index  index.html;
+  }
+}
+
 server {
   listen 80;
   server_name api.thinkbot.net;
