@@ -25,27 +25,36 @@
 
       {% block navbar %}
       <div class="navbar">
-        {% block branding %}<a class="navbar-brand" href="http://thinkbot.net/">thinkbot</a>{% endblock %}
-        <ul class="nav pull-right">
-          {% block userlinks %}
-          <li><a href="/">API Root</a></li>
-          <li><a href="#">Documentation</a></li>
-          <li><a href="mailto:mail@harishnarayanan.org">Support</a></li>
-          {% if user.is_authenticated %}
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              {{ user }}
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li>{% optional_logout request %}</li>
+	<div class="container">
+	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	  </button>
+          {% block branding %}<a class="navbar-brand" href="http://thinkbot.net/">thinkbot</a>{% endblock %}
+	  <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              {% block userlinks %}
+              <li><a href="/">API Root</a></li>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="mailto:mail@harishnarayanan.org">Support</a></li>
+              {% if user.is_authenticated %}
+              <li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		  {{ user }}
+		  <b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+		  <li>{% optional_logout request %}</li>
+		</ul>
+              </li>
+              {% else %}
+              <li>{% optional_login request %}</li>
+              {% endif %}
+              {% endblock %}
             </ul>
-          </li>
-          {% else %}
-          <li>{% optional_login request %}</li>
-          {% endif %}
-          {% endblock %}
-        </ul>
+	  </div>
+	</div>
       </div>
       {% endblock %}
 
