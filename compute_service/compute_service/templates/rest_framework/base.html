@@ -1,62 +1,59 @@
 {% load url from future %}
 {% load rest_framework %}
 <!DOCTYPE html>
-<html>
-    <head>
-    {% block head %}
+<html lang="en">
 
-        {% block meta %}
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="robots" content="NONE,NOARCHIVE" />
-        {% endblock %}
-
-        <title>{% block title %}thinkbot API{% endblock %}</title>
-
-        {% block style %}
-        {% block bootstrap_theme %}<link rel="stylesheet" type="text/css" href="{% static "/static/css/bootstrap.css" %}"/>{% endblock %}
-        {% endblock %}
-
+  {% block head %}
+  <head>
+    {% block meta %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
     {% endblock %}
-    </head>
+    <title>{% block title %}thinkbot API{% endblock %}</title>
+    {% block style %}
+    {% block bootstrap_theme %}<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css"/>{% endblock %}
+    {% endblock %}
+  </head>
+  {% endblock %}
 
   <body class="{% block bodyclass %}{% endblock %} container">
 
     <div class="wrapper">
 
-    {% block navbar %}
-    <div class="navbar {% block bootstrap_navbar_variant %}navbar{% endblock %}">
+      {% block navbar %}
+      <div class="navbar {% block bootstrap_navbar_variant %}navbar{% endblock %}">
         <div class="navbar-inner">
-            <div class="container-fluid">
-                <span href="/" class="lead">
-                    {% block branding %}<a href='http://thinkbot.net/'>thinkbot</a>{% endblock %}
-                </span>
-                <ul class="nav pull-right">
-                    {% block userlinks %}
-                        {% if user.is_authenticated %}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    {{ user }}
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>{% optional_logout request %}</li>
-                                </ul>
-                            </li>
-                        {% else %}
-                            <li>{% optional_login request %}</li>
-                        {% endif %}
-                    {% endblock %}
+          <div class="container-fluid">
+            {% block branding %}<a class="navbar-brand" href='http://thinkbot.net/'>thinkbot</a>{% endblock %}
+            <ul class="nav pull-right">
+              {% block userlinks %}
+              {% if user.is_authenticated %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  {{ user }}
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>{% optional_logout request %}</li>
                 </ul>
-            </div>
+              </li>
+              {% else %}
+              <li>{% optional_login request %}</li>
+              {% endif %}
+              {% endblock %}
+            </ul>
+          </div>
         </div>
-    </div>
+      </div>
     {% endblock %}
 
     {% block breadcrumbs %}
     <ul class="breadcrumb">
         {% for breadcrumb_name, breadcrumb_url in breadcrumblist %}
-            <li>
-                <a href="{{ breadcrumb_url }}" {% if forloop.last %}class="active"{% endif %}>{{ breadcrumb_name }}</a>
+            <li {% if forloop.last %}class="active"{% endif %}>
+                {% if not forloop.last %}<a href="{{ breadcrumb_url }}">{% endif %}{{ breadcrumb_name }}{% if not forloop.last %}</a>{% endif %}
             </li>
         {% endfor %}
     </ul>
@@ -88,7 +85,7 @@
         {% endif %}
 
         {% if options_form %}
-            <form class="button-form" action="{{ request.get_full_path }}" method="POST" class="pull-right">
+            <form class="button-form pull-right" action="{{ request.get_full_path }}" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="{{ api_settings.FORM_METHOD_OVERRIDE }}" value="OPTIONS" />
                 <button class="btn btn-primary js-tooltip" title="Make an OPTIONS request on the {{ name }} resource">OPTIONS</button>
@@ -96,7 +93,7 @@
         {% endif %}
 
         {% if delete_form %}
-            <form class="button-form" action="{{ request.get_full_path }}" method="POST" class="pull-right">
+            <form class="button-form pull-right" action="{{ request.get_full_path }}" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="{{ api_settings.FORM_METHOD_OVERRIDE }}" value="DELETE" />
                 <button class="btn btn-danger js-tooltip" title="Make a DELETE request on the {{ name }} resource">DELETE</button>
@@ -223,8 +220,8 @@
     {% endblock %}
 
     {% block script %}
-    <script src="{% static "/static/js/jquery.js" %}"></script>
-    <script src="{% static "/static/js/bootstrap.js" %}"></script>
+    <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
     {% endblock %}
   </body>
 </html>
