@@ -1,7 +1,9 @@
 from django.forms import widgets
 from django.contrib.auth.models import User
+
 from rest_framework import serializers
-from jobs.models import Job
+
+from .models import Job
 
 class JobSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.Field(source='owner.username')

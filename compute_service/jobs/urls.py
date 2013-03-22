@@ -1,6 +1,8 @@
 from django.conf.urls import include, patterns, url
+
 from rest_framework.urlpatterns import format_suffix_patterns
-from jobs import views
+
+from . import views
 
 # API endpoints
 urlpatterns = format_suffix_patterns(patterns('jobs.views',

@@ -1,5 +1,4 @@
 from django.db import models
-import datetime
 
 ENVIRONMENTS = [('fenics', 'The FEniCS Project')]
 VERSIONS = [('1.1', '1.1')]
