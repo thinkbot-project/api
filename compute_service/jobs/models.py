@@ -15,7 +15,7 @@ class Job(TimeStampedModel):
     name = models.CharField(max_length=100, blank=True, default='')
     environment = models.CharField(max_length=100, choices=ENVIRONMENTS, default='python27')
     code = models.TextField()
-    output = models.CharField(max_length=50, default='stdout')
+    output = models.CharField(max_length=5000, default='stdout')
     max_runtime = models.IntegerField(default=60)
 
     owner = models.ForeignKey('auth.User', related_name='jobs')
