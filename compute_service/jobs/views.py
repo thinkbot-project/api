@@ -16,15 +16,6 @@ def api_root(request, format=None):
         'jobs': reverse('job-list', request=request, format=format)
     })
 
-class JobResult(generics.SingleObjectAPIView):
-    model = Job
-    renderer_classes = (renderers.StaticHTMLRenderer,)
-
-    def get(self, request, *args, **kwargs):
-        job = self.get_object()
-        exec(job.code)
-        return Response(job)
-
 class JobList(generics.ListCreateAPIView):
     model = Job
     serializer_class = JobSerializer
@@ -49,3 +40,12 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     model = User
     serializer_class = UserSerializer
+
+class JobResult(generics.SingleObjectAPIView):
+    model = Job
+    renderer_classes = (renderers.StaticHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs):
+        job = self.get_object()
+        exec(job.code)
+        return Response(job)
