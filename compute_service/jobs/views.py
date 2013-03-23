@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
 from .models import Job
+from .tasks import run_job
 from .serializers import JobSerializer, UserSerializer
 from .permissions import IsOwnerOrReadOnly
 
@@ -47,5 +48,5 @@ class JobResult(generics.SingleObjectAPIView):
 
     def get(self, request, *args, **kwargs):
         job = self.get_object()
-        exec(job.code)
+        run_job.delay(job)
         return Response(job)

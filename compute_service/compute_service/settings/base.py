@@ -123,7 +123,9 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'south',
-    'rest_framework'
+    'rest_framework',
+    'djcelery',
+    'kombu.transport.django'
 )
 
 LOCAL_APPS = (
@@ -135,6 +137,10 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10
 }
+
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = "django:://"
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
