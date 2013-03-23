@@ -6,6 +6,7 @@ from .models import Job
 def run_job(job):
     if job.status == 'submitted':
         job.status = 'running'
+        job.save()
         try:
             exec(job.code)
             job.status = 'completed'

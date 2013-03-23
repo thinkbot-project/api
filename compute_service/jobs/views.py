@@ -32,7 +32,11 @@ class JobDetail(generics.RetrieveUpdateDestroyAPIView):
                           IsOwnerOrReadOnly,)
 
     def pre_save(self, obj):
+        obj.status = 'submitted'
         obj.owner = self.request.user
+
+    def post_save(self, obj, *args, **kwargs):
+        run_job.delay(obj)
 
 class UserList(generics.ListAPIView):
     model = User
