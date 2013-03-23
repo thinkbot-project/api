@@ -10,7 +10,8 @@ def run_job(job):
         try:
             exec(job.code)
             job.status = 'completed'
+            job.output = 'Success'
         except Exception as ex:
             job.status = 'error'
-            job.output = "Error: %s" % ex[0]
+            job.output = 'Error: %s' % ex[0]
         job.save()

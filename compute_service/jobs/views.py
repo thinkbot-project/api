@@ -45,12 +45,3 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     model = User
     serializer_class = UserSerializer
-
-class JobResult(generics.SingleObjectAPIView):
-    model = Job
-    renderer_classes = (renderers.StaticHTMLRenderer,)
-
-    def get(self, request, *args, **kwargs):
-        job = self.get_object()
-        run_job.delay(job)
-        return Response(job)
