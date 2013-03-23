@@ -1,0 +1,32 @@
+diff --git a/compute_service/templates/rest_framework/base.html b/compute_service/templates/rest_framework/base.html
+index 6378a8a..a00507b 100644
+--- a/compute_service/templates/rest_framework/base.html
++++ b/compute_service/templates/rest_framework/base.html
+@@ -15,6 +15,7 @@
+     {% block style %}
+     {% block bootstrap_theme %}<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">{% endblock %}
+     <link rel="stylesheet" href="{{ STATIC_URL }}css/api.css">
++    <link rel="stylesheet" href="{{ STATIC_URL }}codemirror/lib/codemirror.css">
+     {% endblock %}
+   </head>
+   {% endblock %}
+@@ -218,6 +219,19 @@
+     {% block script %}
+     <script src="{{ STATIC_URL }}js/jquery.js"></script>
+     <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
++    <script src="{{ STATIC_URL }}codemirror/lib/codemirror.js"></script>
++    <script src="{{ STATIC_URL }}codemirror/mode/python/python.js"></script>
++    <script src="{{ STATIC_URL }}codemirror/keymap/emacs.js"></script>
++    <script>
++      var editor = CodeMirror.fromTextArea(document.getElementById("id_code"), {
++        lineNumbers: false,
++        tabSize: 2,
++        indentUnit: 2,
++        matchBrackets: true,
++        mode: "text/x-python",
++      });
++    </script>
++  </body>
+     {% endblock %}
+   </body>
+ </html>
