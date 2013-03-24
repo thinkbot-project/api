@@ -14,6 +14,7 @@ class Job(TimeStampedModel):
     name = models.CharField(max_length=100, blank=True, default='')
     environment = models.CharField(max_length=100, choices=ENVIRONMENTS, default='python27')
     code = models.TextField()
+    variables = models.CharField(max_length=100, blank=True, default='')
 
     stdout = models.TextField(blank=True, default='')
     stderr = models.TextField(blank=True, default='')
@@ -27,20 +28,6 @@ class Job(TimeStampedModel):
     class Meta:
         ordering = ('created',)
 
-
-class Variable(models.Model):
-    FORMATS = Choices(('vtk', 'VTK'),
-                      ('json', 'JSON'),
-                      ('svg', 'SVG'),
-                      ('xml', 'XML'),
-                      ('numpy', 'NumPy'))
-    name = models.CharField(max_length=100)
-    format = models.CharField(max_length=10, choices=FORMATS, default='vtk')
-    job = models.ForeignKey(Job, related_name='variables')
-
-    def __unicode__(self):
-        return '%s (%s)' % (self.name, self.format)
-
 class Result(models.Model):
     name = models.CharField(max_length=100)
     location = models.URLField()
@@ -48,3 +35,11 @@ class Result(models.Model):
 
     def __unicode__(self):
         return "%s" % self.location
+
+
+# FORMATS = Choices(('vtk', 'VTK'),
+#                   ('json', 'JSON'),
+#                   ('png', 'PNG'),
+#                   ('svg', 'SVG'),
+#                   ('xml', 'XML'),
+#                   ('numpy', 'NumPy'))

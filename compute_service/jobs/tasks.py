@@ -20,13 +20,15 @@ def run_job(job):
             local_stderr = StringIO.StringIO()
             with RedirectStdStreams(stdout=local_stdout, stderr=local_stderr):
                 output_code = job_output_code(job)
-                exec(job.code + output_code)
+                exec(job.code + output_code) in globals()
             job.status = 'completed'
             job.stdout = local_stdout.getvalue()
-            for variable in job.variables.all():
-                if variable.format == "vtk":
-                    Result.objects.create(name=variable.name,
-                                          location=settings.BASE_URL + "/results/" + str(job.pk) + "/" +variable.name + "000000.vtu",
+            variables = job.variables.split(", ")
+            for variable in variables:
+                name, format = variable.split(".")
+                if format == "vtk":
+                    Result.objects.create(name=name,
+                                          location=settings.BASE_URL + "/results/" + str(job.pk) + "/" + name + "000000.vtu",
                                           job=job)
 
         except Exception as ex:

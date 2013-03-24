@@ -40,10 +40,12 @@ def job_output_path(job):
 def job_output_code(job):
     output_path = job_output_path(job)
     output_code = ''
-    for variable in job.variables.all():
-        if variable.format == "vtk":
+    variables = job.variables.split(", ")
+    for variable in variables:
+        name, format = variable.split(".")
+        if format == "vtk":
             output_code += """
 {0}_file = File("{1}/{0}.pvd")
 {0}_file << {0}
-""".format (variable.name, output_path)
+""".format (name, output_path)
     return output_code
