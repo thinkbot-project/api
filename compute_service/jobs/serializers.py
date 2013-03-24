@@ -11,7 +11,8 @@ class JobSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Job
         fields = ('url', 'status', 'owner', 'created', 'modified',
-                 'name', 'environment', 'code', 'output', 'max_runtime')
+                  'name', 'environment', 'code', 'max_runtime',
+                  'stdout', 'stderr', 'exception')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     jobs = serializers.HyperlinkedRelatedField(many=True, view_name='job-detail')

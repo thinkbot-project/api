@@ -9,7 +9,9 @@ from .models import Job
 def run_job(job):
     if job.status == 'submitted':
         job.status = 'running'
-        job.output = ''
+        job.stdout = ''
+        job.stderr = ''
+        job.exception = ''
         job.save()
         try:
             local_stdout = StringIO.StringIO()
@@ -17,10 +19,9 @@ def run_job(job):
             with RedirectStdStreams(stdout=local_stdout, stderr=local_stderr):
                 exec(job.code)
             job.status = 'completed'
-            job.output += 'stdout: "%s"' % local_stdout.getvalue()
+            job.stdout = local_stdout.getvalue()
         except Exception as ex:
             job.status = 'error'
-            job.output += ', stderr: "%s"' % local_stderr.getvalue()
-            job.output += ', exception: "%s"' % ex[0]
-
+            job.stderr = local_stderr.getvalue()
+            job.exception = ex[0]
         job.save()
