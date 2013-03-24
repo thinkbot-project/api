@@ -45,3 +45,6 @@ class Result(models.Model):
     name = models.CharField(max_length=100)
     location = models.URLField()
     job = models.ForeignKey(Job, related_name='results')
+
+    def __unicode__(self):
+        return "%s" % self.location

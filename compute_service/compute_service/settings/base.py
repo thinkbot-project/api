@@ -7,6 +7,8 @@ root = lambda *x: join(abspath(PROJECT_ROOT), *x)
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+BASE_URL = 'http://api.thinkbot.net'
+
 ADMINS = (
     ('Harish Narayanan', 'hnarayanan@gmail.com'),
 )

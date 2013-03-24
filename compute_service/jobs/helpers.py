@@ -23,3 +23,26 @@ def make_sure_path_exists(path):
     except OSError as exception:
         if exception.errno != errno.EEXIST:
             raise
+
+def reset_job_output(job):
+    job.status = 'running'
+    job.stdout = ''
+    job.stderr = ''
+    job.exception = ''
+    job.results.all().delete()
+    job.save()
+
+def job_output_path(job):
+    current_path = os.path.dirname(os.path.realpath(__file__))
+    output_path = os.path.join(current_path, "..", "results", str(job.pk))
+    return output_path
+
+def job_output_code(job):
+    output_path = job_output_path(job)
+    for variable in job.variables.all():
+        if variable.format == "vtk":
+            output_code = """
+{0}_file = File("{1}/{0}.pvd")
+{0}_file << {0}
+""".format (variable.name, output_path)
+    return output_code
