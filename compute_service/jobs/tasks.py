@@ -1,31 +1,26 @@
-import sys
 import StringIO
-import contextlib
 
 from celery.decorators import task
 
+from .helpers import RedirectStdStreams
 from .models import Job
-
-@contextlib.contextmanager
-def stdoutIO(stdout=None):
-    old = sys.stdout
-    if stdout is None:
-        stdout = StringIO.StringIO()
-    sys.stdout = stdout
-    yield stdout
-    sys.stdout = old
 
 @task()
 def run_job(job):
     if job.status == 'submitted':
         job.status = 'running'
+        job.output = ''
         job.save()
         try:
-            with stdoutIO() as s:
+            local_stdout = StringIO.StringIO()
+            local_stderr = StringIO.StringIO()
+            with RedirectStdStreams(stdout=local_stdout, stderr=local_stderr):
                 exec(job.code)
             job.status = 'completed'
-            job.output = 'Success: %s' % s.getvalue()
+            job.output += 'stdout: "%s"' % local_stdout.getvalue()
         except Exception as ex:
             job.status = 'error'
-            job.output = 'Error: %s' % ex[0]
+            job.output += ', stderr: "%s"' % local_stderr.getvalue()
+            job.output += ', exception: "%s"' % ex[0]
+
         job.save()
