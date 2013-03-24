@@ -8,4 +8,5 @@
 /logs/uwsgi/*.log
 
 /compute_service/static
+/compute_service/results
 /compute_service/compute_service/settings/local.py

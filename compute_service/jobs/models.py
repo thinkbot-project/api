@@ -40,3 +40,8 @@ class Variable(models.Model):
 
     def __unicode__(self):
         return '%s (%s)' % (self.name, self.format)
+
+class Result(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.URLField()
+    job = models.ForeignKey(Job, related_name='results')

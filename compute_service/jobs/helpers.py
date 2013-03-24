@@ -1,5 +1,6 @@
 import os
 import sys
+import errno
 
 class RedirectStdStreams(object):
     def __init__(self, stdout=None, stderr=None):
@@ -15,3 +16,10 @@ class RedirectStdStreams(object):
         self._stdout.flush(); self._stderr.flush()
         sys.stdout = self.old_stdout
         sys.stderr = self.old_stderr
+
+def make_sure_path_exists(path):
+    try:
+        os.makedirs(path)
+    except OSError as exception:
+        if exception.errno != errno.EEXIST:
+            raise
