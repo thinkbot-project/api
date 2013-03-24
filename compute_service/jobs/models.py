@@ -4,7 +4,6 @@ from model_utils import Choices
 from model_utils.models import TimeStampedModel
 from model_utils.fields import StatusField
 
-
 class Job(TimeStampedModel):
     STATUS = Choices('submitted', 'running', 'completed', 'failed')
     ENVIRONMENTS = Choices(('python27', 'Python (2.7)'),
@@ -27,3 +26,17 @@ class Job(TimeStampedModel):
 
     class Meta:
         ordering = ('created',)
+
+
+class Variable(models.Model):
+    FORMATS = Choices(('vtk', 'VTK'),
+                      ('json', 'JSON'),
+                      ('svg', 'SVG'),
+                      ('xml', 'XML'),
+                      ('numpy', 'NumPy'))
+    name = models.CharField(max_length=100)
+    format = models.CharField(max_length=10, choices=FORMATS, default='vtk')
+    job = models.ForeignKey(Job, related_name='variables')
+
+    def __unicode__(self):
+        return '%s (%s)' % (self.name, self.format)
