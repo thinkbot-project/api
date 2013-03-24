@@ -13,6 +13,8 @@ class JobSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'status', 'owner', 'created', 'modified',
                   'name', 'environment', 'code', 'max_runtime',
                   'stdout', 'stderr', 'exception')
+        read_only_fields = ('status', 'stdout', 'stderr', 'exception',
+                            'max_runtime')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     jobs = serializers.HyperlinkedRelatedField(many=True, view_name='job-detail')
