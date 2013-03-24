@@ -23,8 +23,8 @@ server {
 
   client_max_body_size 75M;
 
-  location /media  {
-    alias /home/ubuntu/sites/thinkbot.net/compute_service/media;
+  location /results  {
+    alias /home/ubuntu/sites/thinkbot.net/compute_service/results;
   }
 
   location /static {
