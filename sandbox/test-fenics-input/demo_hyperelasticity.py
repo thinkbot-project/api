@@ -1,31 +1,6 @@
 """ This demo program solves a hyperelastic problem. It is implemented
 in Python by Johan Hake following the C++ demo by Harish Narayanan"""
 
-# Copyright (C) 2008-2010 Johan Hake and Garth N. Wells
-#
-# This file is part of DOLFIN.
-#
-# DOLFIN is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# DOLFIN is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public License
-# along with DOLFIN. If not, see <http://www.gnu.org/licenses/>.
-#
-# Modified by Harish Narayanan 2009
-# Modified by Anders Logg 2011
-#
-# First added:  2009-10-11
-# Last changed: 2012-11-12
-
-# Begin demo
-
 from dolfin import *
 
 # Optimization options for the form compiler
@@ -36,7 +11,7 @@ ffc_options = {"optimize": True, \
                "precompute_ip_const": True}
 
 # Create mesh and define function space
-mesh = UnitCubeMesh(16, 16, 16)
+mesh = UnitCubeMesh(6, 6, 6)
 V = VectorFunctionSpace(mesh, "Lagrange", 1)
 
 # Mark boundary subdomians
@@ -48,7 +23,7 @@ c = Expression(("0.0", "0.0", "0.0"))
 r = Expression(("scale*0.0",
                 "scale*(y0 + (x[1] - y0)*cos(theta) - (x[2] - z0)*sin(theta) - x[1])",
                 "scale*(z0 + (x[1] - y0)*sin(theta) + (x[2] - z0)*cos(theta) - x[2])"),
-                scale = 0.5, y0 = 0.5, z0 = 0.5, theta = pi/3)
+                scale = 0.1, y0 = 0.5, z0 = 0.5, theta = pi/3)
 
 bcl = DirichletBC(V, c, left)
 bcr = DirichletBC(V, r, right)
@@ -89,10 +64,3 @@ J = derivative(F, u, du)
 # Solve variational problem
 solve(F == 0, u, bcs, J=J,
       form_compiler_parameters=ffc_options)
-
-# Save solution in VTK format
-file = File("displacement.pvd");
-file << u;
-
-# Plot and hold solution
-plot(u, mode = "displacement", interactive = True)
