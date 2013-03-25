@@ -18,6 +18,7 @@ window.onload = function() {
 
     var renderValues = function(result) {
 	var items = [];
+	items.push('<ul>');
 	items.push('<li><strong>Name:</strong> ' + result.name + '</li>');
 	items.push('<li><strong>Owner:</strong> ' + result.owner + '</li>');
 	items.push('<li><strong>Resource URL:</strong> ' + result.url + '</li>');
@@ -31,12 +32,9 @@ window.onload = function() {
 	});
 	items.push('</ol>')
 	items.push('</li>')
+	items.push('</ul>');
 
-	$('<ul/>', {
-            'class': 'my-new-list',
-            html: items.join('')
-	}).appendTo('#jobinfo');
-
+	$('#jobinfo').html(items.join(''));
 
 	var solution = new X.mesh();
 	solution.file = result.results[0];
@@ -45,7 +43,6 @@ window.onload = function() {
 	r.render();
     }
 
-
     // create and initialize a 3D renderer
     var r = new X.renderer3D();
     r.container = 'visualization';
@@ -53,7 +50,13 @@ window.onload = function() {
     r.camera.position = [0, 0, 2.5];
     r.camera.focus = [0, 0, 0];
 
-    result = $.getValues("http://localhost:8000/jobs/1/");
-    renderValues(result);
+    $('#stretch').click(function(){
+	result = $.getValues("http://localhost:8000/jobs/52/");
+	renderValues(result);
+    });
 
+    $('#twist').click(function(){
+	result = $.getValues("http://localhost:8000/jobs/1/");
+	renderValues(result);
+    });
 };
