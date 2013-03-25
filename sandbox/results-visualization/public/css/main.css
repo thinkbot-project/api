@@ -1,0 +1,27 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+#visualization {
+    background-color:#000;
+}
+#jobinfo {
+    margin-top:30px;
+    font-size: 16px;
+}
+#jobinfo li {
+    margin-top: 6px;
+}
+
+.flex-video {
+  position: relative;
+  padding-top: 25px;
+  padding-bottom: 67.5%;
+  height: 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+  .flex-video { padding-top: 0; }
+}
