@@ -2,17 +2,21 @@ body {
     padding-top: 60px;
     padding-bottom: 60px;
 }
-#visualization {
+.separator {
+    margin-bottom: 40px;
+}
+
+#visualization1, #visualization2 {
     background-color:#000;
 }
 h2 {
     margin-top: 30px;
 }
-#jobinfo {
-    margin-top:10px;
+#jobinfo1, #jobinfo2 {
+    margin-top: 30px;
     font-size: 16px;
 }
-#jobinfo li {
+#jobinfo1 li, #jobinfo2 li {
     margin-top: 6px;
 }
 

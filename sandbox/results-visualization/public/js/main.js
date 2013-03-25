@@ -16,7 +16,7 @@ window.onload = function() {
 	}
     });
 
-    var renderValues = function(result) {
+    var renderValues = function(result, jobinfo, visualization) {
 	var items = [];
 	items.push('<ul>');
 	items.push('<li><strong>Name:</strong> ' + result.name + '</li>');
@@ -34,7 +34,14 @@ window.onload = function() {
 	items.push('</li>')
 	items.push('</ul>');
 
-	$('#jobinfo').html(items.join(''));
+	$(jobinfo).html(items.join(''));
+
+	// create and initialize a 3D renderer
+	var r = new X.renderer3D();
+	r.container = visualization;
+	r.init();
+	r.camera.position = [0, 0, 2.5];
+	r.camera.focus = [0, 0, 0];
 
 	var solution = new X.mesh();
 	solution.file = result.results[0];
@@ -43,20 +50,13 @@ window.onload = function() {
 	r.render();
     }
 
-    // create and initialize a 3D renderer
-    var r = new X.renderer3D();
-    r.container = 'visualization';
-    r.init();
-    r.camera.position = [0, 0, 2.5];
-    r.camera.focus = [0, 0, 0];
-
     $('#stretch').click(function(){
 	result = $.getValues("http://api.thinkbot.net/jobs/12/");
-	renderValues(result);
+	renderValues(result, "#jobinfo1", "visualization1");
     });
 
     $('#twist').click(function(){
 	result = $.getValues("http://api.thinkbot.net/jobs/3/");
-	renderValues(result);
+	renderValues(result, "#jobinfo2", "visualization2");
     });
 };
