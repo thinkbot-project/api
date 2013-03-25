@@ -1,28 +1,5 @@
 window.onload = function() {
 
-    $.getJSON("http://localhost:8000/jobs/1/", function(data) {
-	var items = [];
-	items.push('<li><strong>Name:</strong> ' + data.name + '</li>');
-	items.push('<li><strong>Owner:</strong> ' + data.owner + '</li>');
-	items.push('<li><strong>Resource URL:</strong> ' + data.url + '</li>');
-	items.push('<li><strong>Environment:</strong> ' + data.environment + '</li>');
-	items.push('<li><strong>Requested results:</strong> ' + data.variables + '</li>');
-	items.push('<li><strong>Status:</strong> ' + data.status + '</li>');
-	items.push('<li><strong>Results URLs:</strong></br>')
-	items.push('<ol>')
-	$.each(data.results, function(key, val){
-            items.push('<li>' + val + '</li>');
-	});
-	items.push('</ol>')
-	items.push('</li>')
-
-	$('<ul/>', {
-            'class': 'my-new-list',
-            html: items.join('')
-	}).appendTo('#jobinfo');
-    });
-
-
     jQuery.extend({
 	getValues: function(url) {
             var result = null;
@@ -38,7 +15,28 @@ window.onload = function() {
 	    return result;
 	}
     });
+
     result = $.getValues("http://localhost:8000/jobs/1/")
+
+    var items = [];
+    items.push('<li><strong>Name:</strong> ' + result.name + '</li>');
+    items.push('<li><strong>Owner:</strong> ' + result.owner + '</li>');
+    items.push('<li><strong>Resource URL:</strong> ' + result.url + '</li>');
+    items.push('<li><strong>Environment:</strong> ' + result.environment + '</li>');
+    items.push('<li><strong>Requested results:</strong> ' + result.variables + '</li>');
+    items.push('<li><strong>Status:</strong> ' + result.status + '</li>');
+    items.push('<li><strong>Result URLs:</strong></br>')
+    items.push('<ol>')
+    $.each(result.results, function(key, val){
+        items.push('<li>' + val + '</li>');
+    });
+    items.push('</ol>')
+    items.push('</li>')
+
+    $('<ul/>', {
+        'class': 'my-new-list',
+        html: items.join('')
+    }).appendTo('#jobinfo');
 
     // create and initialize a 3D renderer
     var r = new X.renderer3D();
