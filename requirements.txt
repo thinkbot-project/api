@@ -8,6 +8,7 @@ billiard==2.7.3.23
 celery==3.0.17
 distribute==0.6.31
 django-celery==3.0.11
+django-cors-headers==0.06
 django-model-utils==1.2.0
 djangorestframework==2.2.4
 gunicorn==0.17.2

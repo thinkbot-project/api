@@ -99,9 +99,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+CORS_ORIGIN_WHITELIST = (
+    'mechanicsacademy.com',
 )
 
 ROOT_URLCONF = 'compute_service.urls'
@@ -127,7 +132,8 @@ THIRD_PARTY_APPS = (
     'south',
     'rest_framework',
     'djcelery',
-    'kombu.transport.django'
+    'kombu.transport.django',
+    'corsheaders'
 )
 
 LOCAL_APPS = (
