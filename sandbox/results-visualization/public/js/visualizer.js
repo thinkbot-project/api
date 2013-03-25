@@ -15,7 +15,7 @@ window.onload = function() {
 	    return result;
 	}
     });
-    result = $.getValues("http://127.0.0.1:8000/jobs/1/")
+    result = $.getValues("http://api.thinkbot.net/jobs/3/")
 
     // create and initialize a 3D renderer
     var r = new X.renderer3D();
