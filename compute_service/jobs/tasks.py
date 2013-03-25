@@ -28,7 +28,7 @@ def run_job(job):
                 name, format = variable.split(".")
                 if format == "vtk":
                     Result.objects.create(name=name,
-                                          location=settings.BASE_URL + "/results/" + str(job.pk) + "/" + name + "000000.vtu",
+                                          location=settings.BASE_URL + "/results/" + str(job.pk) + "/" + name + ".vtk",
                                           job=job)
 
         except Exception as ex:

@@ -39,7 +39,9 @@ def job_output_path(job):
 
 def job_output_code(job):
     output_path = job_output_path(job)
-    output_code = ''
+    output_code = """
+from vtk import *
+"""
     variables = job.variables.split(", ")
     for variable in variables:
         name, format = variable.split(".")
@@ -47,5 +49,25 @@ def job_output_code(job):
             output_code += """
 {0}_file = File("{1}/{0}.pvd")
 {0}_file << {0}
+
+file_name = "{0}000000.vtu"
+
+reader = vtkXMLUnstructuredGridReader()
+reader.SetFileName(file_name)
+reader.Update()
+output = reader.GetOutput()
+scalar_range = output.GetScalarRange()
+
+warp = vtkWarpVector()
+warp.SetInput(output)
+
+surface=vtkDataSetSurfaceFilter()
+surface.SetInput(warp.GetOutput())
+surface.Update()
+
+writer = vtkPolyDataWriter()
+writer.SetFileName("{1}/{0}.vtk")
+writer.SetInput(surface.GetOutput())
+writer.Write()
 """.format (name, output_path)
     return output_code
