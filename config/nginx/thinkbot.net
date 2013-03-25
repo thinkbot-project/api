@@ -25,6 +25,10 @@ server {
 
   location /results  {
     alias /home/ubuntu/sites/thinkbot.net/compute_service/results;
+    gzip_static on; 
+    expires max;
+    add_header Cache-Control public;
+    add_header Access-Control-Allow-Origin *;
   }
 
   location /static {
