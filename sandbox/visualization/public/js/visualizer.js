@@ -24,32 +24,17 @@ window.onload = function() {
 
     // create a new X.mesh
     var solution = new X.mesh();
-    // .. and associate the .vtk file to it
-    solution.file = result.results[0];
-    // .. make it transparent
-    solution.opacity = 0.7;
+    solution.file = '/data/u.vtk'; //result.results[0];
+    solution.caption = result.name;
     solution.magicmode = true;
+    solution.color = [0, 0, 1];
 
     // .. add the mesh
     r.add(solution);
 
     // re-position the camera to face the solution
-    r.camera.position = [0, 400, 0];
+    r.camera.position = [-5, 0, 0];
 
-    // animate..
-    r.onRender = function() {
-
-	// rotate the solution around the Z axis
-	// since we moved the camera, it is Z not X
-	// solution.transform.rotateZ(1);
-
-	// we could also rotate the camera instead which is better in case
-	// we have a lot of objects and want to rotate them all:
-	//
-	r.camera.rotate([1,0]);
-
-    };
-
-  r.render();
+    r.render();
 
 };

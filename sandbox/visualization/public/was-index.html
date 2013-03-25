@@ -9,29 +9,5 @@
   <body>
     <div id="jobinfo">
     </div>
-    <script>
-      $.getJSON("http://127.0.0.1:8000/jobs/1/", function(data) {
-        var items = [];
-        items.push('<li><strong>Name:</strong> ' + data.name + '</li>');
-        items.push('<li><strong>Owner:</strong> ' + data.owner + '</li>');
-        items.push('<li><strong>Resource URL:</strong> ' + data.url + '</li>');
-        items.push('<li><strong>Environment:</strong> ' + data.environment + '</li>');
-        items.push('<li><strong>Code:</strong> ' + data.code + '</li>');
-        items.push('<li><strong>Requested results:</strong> ' + data.variables + '</li>');
-        items.push('<li><strong>Status:</strong> ' + data.status + '</li>');
-        items.push('<li><strong>Results:</strong></br>')
-        items.push('<ol>')
-        $.each(data.results, function(key, val){
-          items.push('<li>' + val + '</li>');
-        });
-        items.push('</ol>')
-        items.push('</li>')
-
-        $('<ul/>', {
-          'class': 'my-new-list',
-          html: items.join('')
-        }).appendTo('#jobinfo');
-      });
-    </script>
   </body>
 </html>
