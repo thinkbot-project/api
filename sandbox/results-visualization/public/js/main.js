@@ -51,12 +51,12 @@ window.onload = function() {
     r.camera.focus = [0, 0, 0];
 
     $('#stretch').click(function(){
-	result = $.getValues("http://localhost:8000/jobs/52/");
+	result = $.getValues("http://api.thinkbot.net/jobs/12/");
 	renderValues(result);
     });
 
     $('#twist').click(function(){
-	result = $.getValues("http://localhost:8000/jobs/1/");
+	result = $.getValues("http://api.thinkbot.net/jobs/3/");
 	renderValues(result);
     });
 };
