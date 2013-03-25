@@ -27,13 +27,13 @@ window.onload = function() {
     solution.file = '/data/u.vtk'; //result.results[0];
     solution.caption = result.name;
     solution.magicmode = true;
-    solution.color = [0, 0, 1];
 
     // .. add the mesh
     r.add(solution);
 
     // re-position the camera to face the solution
-    r.camera.position = [-5, 0, 0];
+    r.camera.position = [0, 0, 3];
+    r.camera.focus = [0, 0, 0];
 
     r.render();
 
