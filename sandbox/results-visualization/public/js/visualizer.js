@@ -24,7 +24,7 @@ window.onload = function() {
 
     // create a new X.mesh
     var solution = new X.mesh();
-    solution.file = '/data/u.vtk'; //result.results[0];
+    solution.file = result.results[0];
     solution.caption = result.name;
     solution.magicmode = true;
 

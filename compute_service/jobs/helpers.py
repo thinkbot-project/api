@@ -50,7 +50,7 @@ from vtk import *
 {0}_file = File("{1}/{0}.pvd")
 {0}_file << {0}
 
-file_name = "{0}000000.vtu"
+file_name = "{1}/{0}000000.vtu"
 
 reader = vtkXMLUnstructuredGridReader()
 reader.SetFileName(file_name)
