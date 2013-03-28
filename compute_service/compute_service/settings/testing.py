@@ -1,4 +1,4 @@
-from .base import root, SECRET_KEY
+from .base import *
 
 DATABASES = {
     'default': {

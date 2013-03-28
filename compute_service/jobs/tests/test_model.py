@@ -5,11 +5,11 @@ from ..models import Job
 
 class JobTests(TestCase):
 
-    def setUp(TestCase):
+    def setUp(self):
         self.user = User.objects.create(username='test')
 
     def test_model_creation(self):
-        job = Job.Object.create(
+        job = Job.objects.create(
             environment = 'python27',
             code = """
 print "Hello, World!"
