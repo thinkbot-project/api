@@ -13,7 +13,7 @@ class JobSerializer(serializers.HyperlinkedModelSerializer):
         model = Job
         fields = ('url', 'status', 'owner', 'created', 'modified',
                   'name', 'environment', 'code', 'variables', 'results',
-                  'max_runtime', 'stdout', 'stderr', 'exception')
+                  'stdout', 'stderr', 'exception')
         read_only_fields = ('status', 'stdout', 'stderr', 'exception',
                             'max_runtime')
 
