@@ -25,11 +25,12 @@ def run_job(job):
             job.stdout = local_stdout.getvalue()
             variables = job.variables.split(", ")
             for variable in variables:
-                name, format = variable.split(".")
-                if format == "vtk":
-                    Result.objects.create(name=name,
-                                          location=settings.BASE_URL + "/results/" + str(job.pk) + "/" + name + ".vtk",
-                                          job=job)
+                if variable:
+                    name, format = variable.split(".")
+                    if format == "vtk":
+                        Result.objects.create(name=name,
+                                              location=settings.BASE_URL + "/results/" + str(job.pk) + "/" + name + ".vtk",
+                                              job=job)
 
         except Exception as ex:
             job.status = 'error'
