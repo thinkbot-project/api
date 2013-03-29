@@ -17,7 +17,6 @@ foo = 1
 bar = 2
 print "1 + 2 = ", foo + bar
 """,
-            max_runtime = 60,
             owner = self.user,
             status = 'submitted')
         self.assertTrue(isinstance(job, Job))
