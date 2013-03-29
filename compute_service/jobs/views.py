@@ -17,13 +17,19 @@ def api_root(request, format=None):
         'jobs': reverse('job-list', request=request, format=format)
     })
 
+
 class JobList(generics.ListCreateAPIView):
     model = Job
     serializer_class = JobSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def pre_save(self, obj):
+        obj.status = 'submitted'
         obj.owner = self.request.user
+
+    def post_save(self, obj, *args, **kwargs):
+        run_job.delay(obj)
+
 
 class JobDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Job
