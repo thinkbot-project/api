@@ -44,9 +44,10 @@ from vtk import *
 """
     variables = job.variables.split(", ")
     for variable in variables:
-        name, format = variable.split(".")
-        if format == "vtk":
-            output_code += """
+        if variable:
+            name, format = variable.split(".")
+            if format == "vtk":
+                output_code += """
 {0}_file = File("{1}/{0}.pvd")
 {0}_file << {0}
 
