@@ -1,0 +1,7 @@
+Welcome to thinkbot's documentation!
+====================================
+
+Coming soon to a browser near you.
+
+.. toctree::
+   :maxdepth: 2
