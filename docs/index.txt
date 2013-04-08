@@ -1,7 +1,81 @@
-Welcome to thinkbot's documentation!
-====================================
+Welcome to thinkbot!
+====================
 
-Coming soon to a browser near you.
+*thinkbot* is a scientific computing service that offers a clean,
+`RESTful API`_. What this means is that you interact with thinkbot via
+standard web protocols, making it easy to use in a variety of
+contexts. The service currently supports general-purpose Python and
+FEniCS_ jobs. Support for Octave/MATLAB, R and other specific numerical
+codes is being targeted for the near future.
+
+thinkbot and this documentation are currently in beta. Please let me
+know if you'd like to try it out by `sending me an e-mail`_.
+
+.. _RESTful API: https://en.wikipedia.org/wiki/Representational_state_transfer
+.. _FEniCS: http://fenicsproject.org/
+.. _sending me an e-mail: mailto:mail@harishnarayanan.org
+
+Submitting a job
+----------------
+
+Command-line
+************
+
+.. code-block:: bash
+
+   curl -X POST http://api.thinkbot.net/jobs/
+        -u "username"
+        -F "name=Name of your job"
+        -F "environment=[python,fenics11]"
+        -F "code=<some_file.py"
+        -F "variables=variable.format"
+
+
+Retrieve information about a job
+--------------------------------
+
+Command-line
+************
+
+.. code-block:: bash
+
+   curl -X GET http://api.thinkbot.net/jobs/job_id/
+        -u "username"
+
+jQuery AJAX
+***********
+
+.. code-block:: javascript
+
+   // Define a handy helper to get results
+   jQuery.extend({
+	getValues: function(url) {
+            var result = null;
+            $.ajax({
+		url: url,
+		type: 'get',
+		dataType: 'json',
+		async: false,
+		success: function(data) {
+                    result = data;
+		}
+            });
+	    return result;
+	}
+    });
+
+    result = $.getValues("http://api.thinkbot.net/jobs/job_id/");
+
+
+Retrieve results of a job
+-------------------------
+
+jQuery AJAX
+***********
+
+.. code-block:: javascript
+
+   solutions = result.results
 
 .. toctree::
    :maxdepth: 2
