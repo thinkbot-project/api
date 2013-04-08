@@ -16,6 +16,17 @@ server {
 
 server {
   listen 80;
+  server_name docs.thinkbot.net;
+  access_log /home/ubuntu/sites/thinkbot.net/logs/nginx/docs_access.log;
+  error_log /home/ubuntu/sites/thinkbot.net/logs/nginx/docs_error.log;
+  location / {
+    root   /home/ubuntu/sites/thinkbot.net/docs/build/html;
+    index  index.html;
+  }
+}
+
+server {
+  listen 80;
   server_name api.thinkbot.net;
   access_log /home/ubuntu/sites/thinkbot.net/logs/nginx/compute_server_access.log;
   error_log /home/ubuntu/sites/thinkbot.net/logs/nginx/compute_server_error.log;
@@ -25,7 +36,7 @@ server {
 
   location /results  {
     alias /home/ubuntu/sites/thinkbot.net/compute_service/results;
-    gzip_static on; 
+    gzip_static on;
     expires max;
     add_header Cache-Control public;
     add_header Access-Control-Allow-Origin *;
