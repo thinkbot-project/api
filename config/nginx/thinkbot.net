@@ -4,6 +4,12 @@ upstream compute_service {
 
 server {
   listen 80;
+  server_name www.thinkbot.net;
+  rewrite ^/(.*) http://thinkbot.net/$1 permanent;
+}
+
+server {
+  listen 80;
   server_name thinkbot.net;
   access_log /home/ubuntu/sites/thinkbot.net/logs/nginx/static_website_access.log;
   error_log /home/ubuntu/sites/thinkbot.net/logs/nginx/static_website_error.log;
