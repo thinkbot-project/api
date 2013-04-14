@@ -1,6 +1,5 @@
 upstream compute_service {
-    #server unix:///tmp/api.thinkbot.net.sock;
-    server 127.0.0.1:8001;
+    server unix:///tmp/api.thinkbot.net.sock;
 }
 
 server {
