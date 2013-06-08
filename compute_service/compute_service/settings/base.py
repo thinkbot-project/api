@@ -105,11 +105,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-CORS_ALLOW_METHODS = (
-    'GET',
-    'OPTIONS'
+CORS_ORIGIN_WHITELIST = (
+    'mechanicsacademy.com',
+    'beta.mechanicsacademy.com',
 )
-CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'compute_service.urls'
 
