@@ -132,6 +132,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'south',
     'rest_framework',
+    'rest_framework.authtoken',
     'djcelery',
     'corsheaders'
 )
@@ -143,7 +144,11 @@ LOCAL_APPS = (
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 REST_FRAMEWORK = {
-    'PAGINATE_BY': 10
+    'PAGINATE_BY': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 import djcelery
