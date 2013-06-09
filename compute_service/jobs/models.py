@@ -4,6 +4,9 @@ from model_utils import Choices
 from model_utils.models import TimeStampedModel
 from model_utils.fields import StatusField
 
+# from django.contrib.auth.models import User
+# from rest_framework.authtoken.models import Token
+
 class Job(TimeStampedModel):
     STATUS = Choices('submitted', 'running', 'completed', 'failed')
     ENVIRONMENTS = Choices(('python27', 'Python (2.7)'),
@@ -35,6 +38,11 @@ class Result(models.Model):
 
     def __unicode__(self):
         return "%s" % self.location
+
+# @receiver(post_save, sender=User)
+# def create_auth_token(sender, instance=None, created=False, **kwargs):
+#     if created:
+#         Token.objects.create(user=instance)
 
 
 # FORMATS = Choices(('vtk', 'VTK'),
