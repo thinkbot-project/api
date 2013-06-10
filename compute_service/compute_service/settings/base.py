@@ -107,7 +107,6 @@ MIDDLEWARE_CLASSES = (
 
 CORS_ORIGIN_WHITELIST = (
     'mechanicsacademy.com',
-    'beta.mechanicsacademy.com',
 )
 
 ROOT_URLCONF = 'compute_service.urls'
