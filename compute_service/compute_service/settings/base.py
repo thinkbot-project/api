@@ -1,98 +1,84 @@
+from os import environ
 from os.path import join, abspath, dirname
+
+import djcelery
+
+from django.core.exceptions import ImproperlyConfigured
+
 
 here = lambda *x: join(abspath(dirname(__file__)), *x)
 PROJECT_ROOT = here("..", "..")
 root = lambda *x: join(abspath(PROJECT_ROOT), *x)
 
+def get_env_variable(var_name):
+    """ Get the environment variable or return exception """
+    try:
+        return environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
+
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-BASE_URL = 'http://api.thinkbot.net'
+BASE_URL = 'http://%s' % get_env_variable('TB_HOST')
 
 ADMINS = (
-    ('Harish Narayanan', 'hnarayanan@gmail.com'),
+    (get_env_variable('TB_ADMIN_NAME'), get_env_variable('TB_ADMIN_EMAIL')),
 )
+
+DEFAULT_FROM_EMAIL = '%s <%s>' % ADMINS[0]
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'thinkbot_db',                      # Or path to database file if using sqlite3.
-        'USER': 'thinkbot_user',                      # Not used with sqlite3.
-        'PASSWORD': '2332gVfuvuw1+hfv',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': get_env_variable('TB_DB_NAME'),
+        'USER': get_env_variable('TB_DB_USER'),
+        'PASSWORD': get_env_variable('TB_DB_PASSWORD'),
+        'HOST': get_env_variable('TB_DB_HOST'),
+        'PORT': get_env_variable('TB_DB_PORT'),
     }
 }
 
-# Hosts/domain names that are valid for this site; required if DEBUG is False
-# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['api.thinkbot.net']
+ALLOWED_HOSTS = [get_env_variable('TB_HOST')]
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'Europe/Oslo'
+TIME_ZONE = get_env_variable('TB_TIME_ZONE')
 
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
 USE_I18N = True
 
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
 USE_L10N = True
 
-# If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/var/www/example.com/media/"
 MEDIA_ROOT = root("results")
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = '/results/'
 
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/var/www/example.com/static/"
 STATIC_ROOT = root("static")
 
-# URL prefix for static files.
-# Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
-# Additional locations of static files
 STATICFILES_DIRS = (
     root("assets"),
 )
 
-# List of finder classes that know how to find static files in
-# various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '!6d(3dmd=cw4f(i4ntajd_s5-l$=xehogc3av((a44pbe&bnhf'
+SECRET_KEY = get_env_variable('TB_SECRET_KEY')
 
-# List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,12 +93,10 @@ MIDDLEWARE_CLASSES = (
 
 CORS_ORIGIN_WHITELIST = (
     'mechanicsacademy.com',
-    'beta.mechanicsacademy.com',
 )
 
 ROOT_URLCONF = 'compute_service.urls'
 
-# Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'compute_service.wsgi.application'
 
 TEMPLATE_DIRS = (
@@ -137,6 +121,8 @@ THIRD_PARTY_APPS = (
     'corsheaders'
 )
 
+djcelery.setup_loader()
+
 LOCAL_APPS = (
     'jobs',
 )
@@ -151,22 +137,6 @@ REST_FRAMEWORK = {
     )
 }
 
-import djcelery
-djcelery.setup_loader()
-
-BROKER_HOST = "127.0.0.1"
-BROKER_PORT = 5672
-BROKER_USER = "ubuntu"
-BROKER_PASSWORD = "somepassword"
-BROKER_VHOST = "thinkbot_vhost"
-CELERY_BACKEND = "amqp"
-CELERY_RESULT_DBURI = ""
-
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
