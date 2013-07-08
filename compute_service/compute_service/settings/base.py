@@ -95,6 +95,10 @@ CORS_ORIGIN_WHITELIST = (
     'mechanicsacademy.com',
 )
 
+CORS_ORIGIN_REGEX_WHITELIST = (
+    '^http?://(\w+\.)?edx\.org$',
+)
+
 ROOT_URLCONF = 'compute_service.urls'
 
 WSGI_APPLICATION = 'compute_service.wsgi.application'
