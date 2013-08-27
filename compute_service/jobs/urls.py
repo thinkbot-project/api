@@ -6,7 +6,7 @@ from . import views
 
 # API endpoints
 urlpatterns = format_suffix_patterns(patterns('jobs.views',
-    url(r'^$', 'api_root'),
+    url(r'^$', 'api_root', name='api_root'),
     url(r'^jobs/$',
         views.JobList.as_view(),
         name='job-list'),
