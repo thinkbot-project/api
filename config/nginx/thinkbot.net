@@ -1,43 +1,60 @@
 upstream compute_service {
-    server unix:///tmp/api.thinkbot.net.sock;
+    server unix:///tmp/thinkbot.net.sock;
 }
 
 server {
-  listen 80;
-  server_name www.thinkbot.net;
-  rewrite ^/(.*) http://thinkbot.net/$1 permanent;
-}
+  server_name _;
+  server_name_in_redirect off;
 
-server {
-  listen 80;
-  server_name thinkbot.net;
-  access_log /home/ubuntu/sites/thinkbot.net/logs/nginx/static_website_access.log;
-  error_log /home/ubuntu/sites/thinkbot.net/logs/nginx/static_website_error.log;
+  listen 80 default_server;
+
+  access_log off;
+  error_log off;
+
   location / {
-    root   /home/ubuntu/sites/thinkbot.net/static_website/public;
-    index  index.html;
+    deny all;
   }
 }
 
 server {
-  listen 80;
-  server_name docs.thinkbot.net;
-  access_log /home/ubuntu/sites/thinkbot.net/logs/nginx/docs_access.log;
-  error_log /home/ubuntu/sites/thinkbot.net/logs/nginx/docs_error.log;
-  location / {
-    root   /home/ubuntu/sites/thinkbot.net/docs/build/html;
-    index  index.html;
-  }
+  server_name          www.thinkbot.net;
+
+  ssl_certificate      /home/ubuntu/sites/thinkbot.net/config/ssl/thinkbot.net.crt;
+  ssl_certificate_key  /home/ubuntu/sites/thinkbot.net/config/ssl/thinkbot.net.key;
+
+  listen               *:80;
+  listen               *:443 ssl;
+  listen               [::]:80 ipv6only=on;
+  listen               [::]:443 ssl ipv6only=on;
+
+  return 301 https://thinkbot.net$request_uri;
 }
 
 server {
-  listen 80;
-  server_name api.thinkbot.net;
-  access_log /home/ubuntu/sites/thinkbot.net/logs/nginx/compute_server_access.log;
-  error_log /home/ubuntu/sites/thinkbot.net/logs/nginx/compute_server_error.log;
+  server_name          thinkbot.net;
+
+  listen               *:80;
+  listen               [::]:80;
+
+  return 301 https://thinkbot.net$request_uri;
+}
+
+server {
+  server_name          thinkbot.net;
+
+  ssl_certificate      /home/ubuntu/sites/thinkbot.net/config/ssl/thinkbot.net.crt;
+  ssl_certificate_key  /home/ubuntu/sites/thinkbot.net/config/ssl/thinkbot.net.key;
+
+  listen               *:443 ssl;
+  listen               [::]:443 ssl;
+
+  access_log /home/ubuntu/sites/thinkbot.net/logs/nginx/access.log;
+  error_log /home/ubuntu/sites/thinkbot.net/logs/nginx/error.log;
+
   charset utf-8;
-
   client_max_body_size 75M;
+
+  proxy_set_header X-Forwarded-Protocol $scheme;
 
   location /results  {
     alias /home/ubuntu/sites/thinkbot.net/compute_service/results;
@@ -53,6 +70,6 @@ server {
 
   location / {
     uwsgi_pass  compute_service;
-    include     /home/ubuntu/sites/thinkbot.net/config/uwsgi/uwsgi_params;
+    include /home/ubuntu/sites/thinkbot.net/config/uwsgi/uwsgi_params;
   }
 }
