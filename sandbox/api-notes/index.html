@@ -47,18 +47,54 @@
             </tr>
             <tr>
               <td><code>GET</code</td>
-              <td><code>/users/{user_id}/</code></td>
+              <td><code>/users/{id}/</code></td>
               <td>Retrieve specific user information</td>
             </tr>
             <tr>
               <td><code>PUT</code</td>
-              <td><code>/users/{user_id}/</code></td>
+              <td><code>/users/{id}/</code></td>
               <td>Update specific user information</td>
             </tr>
             <tr>
               <td><code>DELETE</code</td>
-              <td><code>/users/{user_id}/</code></td>
+              <td><code>/users/{id}/</code></td>
               <td>Delete specific user</td>
+            </tr>
+          </tbody>
+	</table>
+      </div>
+
+      <h3 id="environments">Environments</h3>
+      <p>In addition to the <a href="">standard environments</a> that thinkbot comes prebuilt with, you can define and use your own software environments.</p>
+      <div class="table-responsive">
+	<table class="table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Slug</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td><code>POST</code</td>
+            <td><code>/environments/</code></td>
+            <td>Define a new software environment</td>
+            </tr>
+            <tr>
+              <td><code>GET</code</td>
+              <td><code>/environments/{id}/</code></td>
+              <td>Retrieve specific environment information</td>
+            </tr>
+            <tr>
+              <td><code>PUT</code</td>
+              <td><code>/environments/{id}/</code></td>
+              <td>Update specific environment information</td>
+            </tr>
+            <tr>
+              <td><code>DELETE</code</td>
+              <td><code>/environments/{id}/</code></td>
+              <td>Delete specific environment</td>
             </tr>
           </tbody>
 	</table>
