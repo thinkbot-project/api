@@ -12,11 +12,12 @@ urlpatterns = patterns('',
     url(r'^$', views.HomePageView.as_view(), name="home"),
     url(r'^about/$', views.AboutPageView.as_view(), name="about"),
     url(r'^docs/$', views.DocsPageView.as_view(), name="docs"),
-    url(r'^help/$', views.SupportPageView.as_view(), name="support"),
-    url(r'^terms/$', views.LegalPageView.as_view(), name="legal"),
+    url(r'^support/$', views.SupportPageView.as_view(), name="support"),
+    url(r'^terms/$', views.TermsPageView.as_view(), name="terms"),
+    url(r'^privacy/$', views.PrivacyPageView.as_view(), name="privacy"),
 
     url(r'^api/v1/', include('jobs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^backend/', include(admin.site.urls)),
 )
 
 if settings.DEBUG:
