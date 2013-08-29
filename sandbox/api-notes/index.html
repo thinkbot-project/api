@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <title>API Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:300,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:900">
+    <link href="css/vendor/bootstrap.css" rel="stylesheet" media="screen">
+
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>thinkbot API Reference <small>v 1.0</small></h1>
+      <p class="lead">thinkbot provides a friendly and powerful REST API that allows you to run sophisticated scientific software from just about anywhere.</p>
+      <p>Following convention, this API is organised as a <a href="#resources">set of resources</a> you can manipulate. All requests use the <code>application/json</code> content type and go over <code>https</code>. The base URL to access the current version of the API is <code>https://thinkbot.net/api/v1/</code>.</p>
+      <p>If you have questions or feedback on the API, please get in <a href="">touch with me</a>.</p>
+      <h2 id="authenticating">Authenticating with the API</h2>
+<!--            <tr class="danger">
+              <td><code>GET</code></td>
+              <td><code>/users/{user_id}/token</code></td>
+              <td>Authenticate user for current session</td>
+            </tr>-->
+      <p class="text-muted">To be written.</p>
+
+      <h2 id="resources">Resources</h2>
+
+      <h3 id="users">Users</h3>
+      <div class="table-responsive">
+	<table class="table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Slug</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td><code>POST</code</td>
+            <td><code>/users/</code></td>
+            <td>Create or sign-up a new user</td>
+            </tr>
+            <tr>
+              <td><code>GET</code</td>
+              <td><code>/users/{user_id}/</code></td>
+              <td>Retrieve specific user information</td>
+            </tr>
+            <tr>
+              <td><code>PUT</code</td>
+              <td><code>/users/{user_id}/</code></td>
+              <td>Update specific user information</td>
+            </tr>
+            <tr>
+              <td><code>DELETE</code</td>
+              <td><code>/users/{user_id}/</code></td>
+              <td>Delete specific user</td>
+            </tr>
+          </tbody>
+	</table>
+      </div>
+
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="js/vendor/bootstrap.js"></script>
+  </body>
+</html>
