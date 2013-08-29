@@ -22,7 +22,7 @@ def get_env_variable(var_name):
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-BASE_URL = 'http://%s' % get_env_variable('TB_HOST')
+BASE_URL = get_env_variable('TB_HOST')
 
 ADMINS = (
     (get_env_variable('TB_ADMIN_NAME'), get_env_variable('TB_ADMIN_EMAIL')),
