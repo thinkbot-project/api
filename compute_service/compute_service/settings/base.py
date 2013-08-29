@@ -57,13 +57,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_ROOT = root("results")
+MEDIA_ROOT = root("media")
 
-MEDIA_URL = '/results/'
+MEDIA_URL = '/media/'
 
-STATIC_ROOT = root("static")
+STATIC_ROOT = root("collected_assets")
 
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'
 
 STATICFILES_DIRS = (
     root("assets"),
