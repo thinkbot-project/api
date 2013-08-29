@@ -4,14 +4,13 @@
 \#*#
 
 /config/secrets
-/data/db
 
 /venv
 /logs/nginx/*.log
 /logs/uwsgi/*.log
 
 /compute_service/.coverage
-/compute_service/static
+/compute_service/collected_assets
 /compute_service/results
 
 /docs/build
