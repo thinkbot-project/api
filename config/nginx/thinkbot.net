@@ -64,8 +64,8 @@ server {
     add_header Access-Control-Allow-Origin *;
   }
 
-  location /static {
-    alias /home/ubuntu/sites/thinkbot.net/compute_service/static;
+  location /assets {
+    alias /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
   }
 
   location / {
