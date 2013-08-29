@@ -19,15 +19,22 @@
       <p class="lead">thinkbot provides a friendly and powerful REST API that allows you to run sophisticated scientific software from just about anywhere.</p>
       <p>Following convention, this API is organised as a <a href="#resources">set of resources</a> you can manipulate. All requests use the <code>application/json</code> content type and go over <code>https</code>. The base URL to access the current version of the API is <code>https://thinkbot.net/api/v1/</code>.</p>
       <p>If you have questions or feedback on the API, please get in <a href="">touch with me</a>.</p>
-      <h2 id="authenticating">Authenticating with the API</h2>
-<!--            <tr class="danger">
-              <td><code>GET</code></td>
-              <td><code>/users/{user_id}/token</code></td>
-              <td>Authenticate user for current session</td>
-            </tr>-->
+      <h2 id="overview">Getting started with the API</h2>
+
+      <h3 id="authenticating">Authenticating</h2>
       <p class="text-muted">To be written.</p>
 
-      <h2 id="resources">Resources</h2>
+<!--
+<tr class="danger">
+  <td><code>GET</code></td>
+  <td><code>/users/{user_id}/token</code></td>
+  <td>Authenticate user for current session</td>
+</tr>
+-->
+      <h3 id="examples">Example usage</h2>
+      <p class="text-muted">To be written.</p>
+
+      <h2 id="resources">All resources</h2>
 
       <h3 id="users">Users</h3>
       <div class="table-responsive">
@@ -95,6 +102,45 @@
               <td><code>DELETE</code</td>
               <td><code>/environments/{id}/</code></td>
               <td>Delete specific environment</td>
+            </tr>
+          </tbody>
+	</table>
+
+      <h3 id="jobs">Jobs</h3>
+      <div class="table-responsive">
+	<table class="table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Slug</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td><code>POST</code</td>
+            <td><code>/jobs/</code></td>
+            <td>Submit a new job</td>
+            </tr>
+            <tr>
+              <td><code>GET</code</td>
+              <td><code>/jobs/{id}/</code></td>
+              <td>Query specific job status</td>
+            </tr>
+            <tr>
+              <td><code>GET</code</td>
+              <td><code>/jobs/{id}/results/{id}</code></td>
+              <td>Retrieve specific job results</td>
+            </tr>
+            <tr>
+              <td><code>PUT</code</td>
+              <td><code>/jobs/{id}/</code></td>
+              <td>Update specific job</td>
+            </tr>
+            <tr>
+              <td><code>DELETE</code</td>
+              <td><code>/jobs/{id}/</code></td>
+              <td>Delete specific job</td>
             </tr>
           </tbody>
 	</table>
