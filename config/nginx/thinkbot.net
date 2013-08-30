@@ -56,11 +56,39 @@ server {
 
   proxy_set_header X-Forwarded-Protocol $scheme;
 
-  location ~ /{favicon.ico|humans.txt|robots.txt} {
+  location /apple-touch-icon-114x114-precomposed.png {
     root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
   }
 
-  location ~ /{apple-touch-icon.png|apple-touch-icon-precomposed.png} {
+  location /apple-touch-icon-144x144-precomposed.png {
+    root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
+  location /apple-touch-icon-57x57-precomposed.png {
+    root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
+  location /apple-touch-icon-72x72-precomposed.png {
+    root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
+  location /apple-touch-icon-precomposed.png {
+    root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
+  location /apple-touch-icon.png {
+    root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
+  location /favicon.ico {
+    root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
+  location /humans.txt {
+    root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
+  location /robots.txt {
     root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
   }
 
