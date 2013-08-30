@@ -11,7 +11,9 @@ django-celery==3.0.21
 django-cors-headers==0.11
 django-model-utils==1.4.0
 django-secure==1.0
+django-registration==1.0
 djangorestframework==2.3.7
+djrill==0.6.0
 kombu==2.5.14
 paramiko==1.11.0
 psycopg2==2.5.1
