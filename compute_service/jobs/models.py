@@ -1,5 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
+from django.dispatch import receiver
 
 from model_utils import Choices
 from model_utils.models import TimeStampedModel
@@ -40,10 +42,11 @@ class Result(models.Model):
     def __unicode__(self):
         return "%s" % self.location
 
-# @receiver(post_save, sender=User)
-# def create_auth_token(sender, instance=None, created=False, **kwargs):
-#     if created:
-#         Token.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
 
 # FORMATS = Choices(('vtk', 'VTK'),
