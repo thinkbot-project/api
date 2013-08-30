@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^terms/$', views.TermsPageView.as_view(), name="terms"),
     url(r'^privacy/$', views.PrivacyPageView.as_view(), name="privacy"),
 
+    url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^api/v1/', include('jobs.urls')),
     url(r'^backend/', include(admin.site.urls)),
 )

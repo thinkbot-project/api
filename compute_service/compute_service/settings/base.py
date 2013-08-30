@@ -125,6 +125,7 @@ THIRD_PARTY_APPS = (
     'rest_framework.authtoken',
     'djcelery',
     'corsheaders',
+    'registration',
     'djrill',
 )
 
@@ -136,6 +137,8 @@ SESSION_COOKIE_HTTPONLY = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 djcelery.setup_loader()
+
+ACCOUNT_ACTIVATION_DAYS = 10
 
 MANDRILL_API_KEY = get_env_variable('TB_MANDRILL_API_KEY')
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
