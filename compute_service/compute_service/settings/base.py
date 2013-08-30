@@ -127,6 +127,7 @@ THIRD_PARTY_APPS = (
     'corsheaders',
     'registration',
     'djrill',
+    'crispy_forms',
 )
 
 SECURE_FRAME_DENY = True
