@@ -56,16 +56,24 @@ server {
 
   proxy_set_header X-Forwarded-Protocol $scheme;
 
+  location ~ /{favicon.ico|humans.txt|robots.txt} {
+    root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
+  location ~ /{apple-touch-icon.png|apple-touch-icon-precomposed.png} {
+    root /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
+  location /assets {
+    alias /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
+  }
+
   location /results  {
     alias /home/ubuntu/sites/thinkbot.net/compute_service/results;
     gzip_static on;
     expires max;
     add_header Cache-Control public;
     add_header Access-Control-Allow-Origin *;
-  }
-
-  location /assets {
-    alias /home/ubuntu/sites/thinkbot.net/compute_service/collected_assets;
   }
 
   location / {
