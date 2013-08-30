@@ -3,6 +3,9 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.conf import settings
 
+from registration.backends.default.views import ActivationView
+from registration.backends.default.views import RegistrationView
+
 from . import views
 
 
@@ -16,6 +19,13 @@ urlpatterns = patterns('',
     url(r'^support/$', views.SupportPageView.as_view(), name="support"),
     url(r'^terms/$', views.TermsPageView.as_view(), name="terms"),
     url(r'^privacy/$', views.PrivacyPageView.as_view(), name="privacy"),
+
+    url(r'^activate/complete/$', TemplateView.as_view(template_name='registration/activation_complete.html'), name='registration_activation_complete'),
+    url(r'^activate/(?P<activation_key>\w+)/$', ActivationView.as_view(), name='registration_activate'),
+    url(r'^signup/$', RegistrationView.as_view(), name='registration_register'),
+    url(r'^signup/complete/$', TemplateView.as_view(template_name='registration/registration_complete.html'), name='registration_complete'),
+    url(r'^signup/closed/$', TemplateView.as_view(template_name='registration/registration_closed.html'), name='registration_disallowed'),
+    (r'', include('registration.auth_urls')),
 
     url(r'^api/v1/', include('jobs.urls')),
     url(r'^backend/', include(admin.site.urls)),

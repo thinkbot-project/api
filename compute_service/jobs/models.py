@@ -1,11 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 from model_utils import Choices
 from model_utils.models import TimeStampedModel
 from model_utils.fields import StatusField
+from rest_framework.authtoken.models import Token
 
-# from django.contrib.auth.models import User
-# from rest_framework.authtoken.models import Token
 
 class Job(TimeStampedModel):
     STATUS = Choices('submitted', 'running', 'completed', 'failed')
@@ -25,11 +25,12 @@ class Job(TimeStampedModel):
 
     max_runtime = models.IntegerField(default=60)
 
-    owner = models.ForeignKey('auth.User', related_name='jobs')
+    owner = models.ForeignKey(User, related_name='jobs')
     status = StatusField()
 
     class Meta:
         ordering = ('created',)
+
 
 class Result(models.Model):
     name = models.CharField(max_length=100)
