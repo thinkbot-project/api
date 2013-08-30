@@ -1,15 +1,8 @@
-# humanstxt.org/
-# The humans responsible & technology colophon
+thinkbot is the brainchild of Harish Narayanan <mail@harishnarayanan.org>
 
-# TEAM
+The service stands on the shoulders of a number of Free Software
+projects, including Linux, Nginx, Django, Python, R, GNU Octave,
+RabbitMQ, Celery, PostgreSQL and Bootstrap. It is lovingly-crafted in
+GNU Emacs.
 
-    <name> -- <role> -- <twitter>
-
-# THANKS
-
-    <name>
-
-# TECHNOLOGY COLOPHON
-
-    HTML5, CSS3
-    jQuery, Modernizr
+Do get in touch if you'd like to contribute to it!
