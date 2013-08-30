@@ -1,6 +1,11 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
+{% if user.is_authenticated %}
+<div class="alert alert-success">
+  Welcome {{ user.username }}. Your Authorization Token for the following REST requests is: <strong>{{ user_token }}</strong>.
+</div>
+{% endif %}
 <h1>thinkbot API Reference <small>v 1.0</small></h1>
 <p class="lead">thinkbot provides a friendly and powerful REST API that allows you to run sophisticated scientific software from just about anywhere.</p>
 <p>Following convention, thinkbot&#8217;s API is organised as a <a href="#resources">set of resources</a> that can manipulated with well-defined requests to the service. All requests to the API go over <code>https</code> and use the <code>application/json</code> content type. The base URL to access this current version of the API is <code>https://thinkbot.net/api/v1</code>.</p>
