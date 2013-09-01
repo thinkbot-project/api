@@ -1,10 +1,64 @@
 {% extends "layouts/base.html" %}
+{% load staticfiles %}
 
 {% block content %}
-<h1>Landing and fund-raising page</h1>
+<div class="jumbotron">
+  <h1>Simplify your scientific computing with thinkbot</h1>
+  <p>A friendly interface to sophisticated simulation software</p>
+  <p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading">A powerful computing cluster. <span class="text-muted">A simple API.</span></h2>
+    <p class="lead">thinkbot&#8217;s friendly <a href="{% url 'docs' %}">RESTful API</a> allows you to easily access your simulations from anywhere&mdash;a command line, a browser window, or even your mobile device.</p>
+  </div>
+  <div class="col-md-5">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/from-anywhere.jpg" %}" alt="Generic placeholder image">
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-5">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/from-anywhere.jpg" %}" alt="Generic placeholder image">
+  </div>
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+    <p class="lead">You handle the science, thinkbot will handle the rest. Perfect for teaching, new lab recruits and hires because they don't need to set anything up and can focus on the actual learning.</p>
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Something about it being a young product, <span class="text-muted">you can decide how it is going to evolve.</span></h2>
+    <p class="lead">List of upcoming features. Who is interested in it. And how you can support specific features, such as smoothening out the platform of your choice. Finance? Comp. Bio?</p>
+  </div>
+  <div class="col-md-5">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/from-anywhere.jpg" %}" alt="Generic placeholder image">
+  </div>
+</div>
+
+<hr class="featurette-divider">
+{% endblock %}
+
+<!--<p class="lead">thinkbot harnesses the power of a complex compute cluster and offers it to you via a friendly RESTful API.</p>
+<p class="text-center">
+  <img class="img-responsive" src="holder.js/900x300">
+</p>
+<p class="lead">Being able to interact with the service via standard web protocols allows for many wonderful things:</p>-->
+
+<!-- Sophisticated simulation software for the rest of us -->
+<!-- Sophisticated simulation software, now for everyone -->
+<!--
+<!-- <h1>Landing and fund-raising page</h1>
 <ul>
   <li>Publicise the service and highlight its unique value proposition</li>
   <li>Explain different features</li>
   <li>Try to raise funds for individual features to determine what is interesting for people</li>
-</ul>
-{% endblock %}
+</ul>-->
