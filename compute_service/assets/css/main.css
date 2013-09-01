@@ -11,7 +11,6 @@ body {
   padding: 0 0 60px;
 }
 
-/* Set the fixed height of the footer here */
 #footer {
   height: 60px;
   background-color: #f5f5f5;
@@ -34,4 +33,28 @@ body {
 #footer a:hover {
   text-decoration: none;
   color: #333;
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+
+.jumbotron .btn {
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
 }
