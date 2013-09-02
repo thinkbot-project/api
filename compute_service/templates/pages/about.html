@@ -1,41 +1,68 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-<h1>About thinkbot</h1>
-<p>The philosophy behind the service, more about me and a gallery of interesting uses</p>
-{% if not user.is_authenticated %}
+<div class="row">
+  <div class="col-lg-8">
+    <h1>About thinkbot</h1>
+    <ul>
+      <li>The philosophy behind the service</li>
+      <li>More about me</li>
+      <li>Gallery of interesting uses</li>
+    </ul>
+      {% if not user.is_authenticated %}
 <p>Like how all this sounds?</p>
 <p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
 {% endif %}
 <h2>Development status</h2>
+<h3>Core functionality</h3>
+<h3>Conveniences and efficiency</h3>
+<h3>Security</h3>
 <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
         <th>#</th>
         <th>Feature</th>
-        <th>Status</th>
+        <th>Progress</th>
+        <th class="text-center">Contribute</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>1</td>
         <td>Enable SSL throughout the site</td>
-        <td><div class="progress">
+        <td>
+	  <div class="progress">
 	    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-    <span class="sr-only">40% Complete (success)</span>
-  </div>
-</div></td>
+	      <span class="sr-only">100% Complete (success)</span>
+	    </div>
+	</div>
+	</td>
+	<td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
       </tr>
       <tr>
         <td>2</td>
-        <td>Expose to extreme heat</td>
-        <td>Preliminary</td>
+        <td>Secure payments with Stripe</td>
+	<td>
+	  <div class="progress">
+	    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+	      <span class="sr-only">10% Complete (danger)</span>
+	    </div>
+	</div>
+	</td>
+	<td class="text-center"><span class="glyphicon glyphicon-heart-empty"></span></td>
       </tr>
       <tr>
         <td>3</td>
         <td>Play Kanye&#8217s Yeezus</td>
-        <td>Complete</td>
+        <td>
+	  <div class="progress">
+	    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+	      <span class="sr-only">60% Complete (warning)</span>
+	    </div>
+	  </div>
+	</td>
+	<td class="text-center"><span class="glyphicon glyphicon-heart-empty"></span></td>
       </tr>
     </tbody>
   </table>
@@ -43,6 +70,8 @@
 <p>If you'd like to speed up the development on any of these fronts, please consider sponsoring my time to work on them.</p>
 <h2>Partner organisations</h2>
 Studix, Orobix, Still-water supercomputing etc.
+</div>
+</div>
 {% endblock %}
 
 <!--  <li>Try to raise funds for individual features to determine what is interesting for people</li>
