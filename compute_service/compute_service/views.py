@@ -36,11 +36,6 @@ class SupportPageView(TemplateView):
     template_name = "pages/support.html"
 
 
-class TermsPageView(TemplateView):
+class LegalPageView(TemplateView):
 
-    template_name = "pages/terms.html"
-
-
-class PrivacyPageView(TemplateView):
-
-    template_name = "pages/privacy.html"
+    template_name = "pages/legal.html"
