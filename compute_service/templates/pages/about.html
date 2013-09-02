@@ -2,7 +2,11 @@
 
 {% block content %}
 <h1>About thinkbot</h1>
-<p>More about the service, gallery of interesting uses</p>
+<p>The philosophy behind the service, more about me and a gallery of interesting uses</p>
+{% if not user.is_authenticated %}
+<p>Like how all this sounds?</p>
+<p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+{% endif %}
 <h2>Development status</h2>
 <div class="table-responsive">
   <table class="table">
@@ -32,4 +36,7 @@
     </tbody>
   </table>
 </div>
+<p>If you'd like to speed up the development on any of these fronts, please consider sponsoring my time to work on them.</p>
+<h2>Partner organisations</h2>
+Studix, Orobix, Still-water supercomputing etc.
 {% endblock %}

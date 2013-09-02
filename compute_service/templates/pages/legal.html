@@ -5,4 +5,8 @@
 <p>Please don&#8217;t be evil.</p>
 <h1>Privacy Policy</h1>
 <p>I charge you for a useful service, so my relationship with you is clear. I will not sell your data.</p>
+{% if not user.is_authenticated %}
+<p>Like the sound of that?</p>
+<p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+{% endif %}
 {% endblock %}
