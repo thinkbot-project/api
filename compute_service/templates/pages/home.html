@@ -12,8 +12,8 @@
 
 <div class="row featurette">
   <div class="col-md-7">
-    <h2 class="featurette-heading">A powerful computing cluster. <span class="text-muted">A beautiful API.</span></h2>
-    <p class="lead">thinkbot&#8217;s friendly <a href="{% url 'docs' %}">RESTful API</a> allows you to easily access complex simulations from anywhere&mdash;a command line, a browser window, or even <a href="https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB">your mobile device</a>!</p>
+    <h2 class="featurette-heading">A powerful computing cluster. <span class="text-muted">An elegant API.</span></h2>
+    <p class="lead">thinkbot&#8217;s friendly <a href="{% url 'docs' %}">RESTful API</a> allows you to easily access complex simulations from anywhere&mdash;a command line, a browser window, or even <a href="https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB" target="_blank">your mobile device</a>!</p>
   </div>
   <div class="col-md-5">
     <img class="featurette-image img-responsive" src="{% static "img/landing/from-anywhere.jpg" %}" alt="Generic placeholder image">
@@ -28,7 +28,7 @@
     <p class="lead">You handle the science, thinkbot will handle the rest. Perfect for teaching, new lab recruits and hires because they don't need to set anything up and can focus on the actual learning.</p>
   </div>
   <div class="col-md-5 col-md-pull-7">
-    <img class="featurette-image img-responsive" src="{% static "img/landing/from-anywhere.jpg" %}" alt="Generic placeholder image">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/many-parts.jpg" %}" alt="Generic placeholder image">
   </div>
 </div>
 
@@ -40,11 +40,15 @@
     <p class="lead">List of upcoming features. Who is interested in it. And how you can support specific features, such as smoothening out the platform of your choice. Finance? Comp. Bio?</p>
   </div>
   <div class="col-md-5">
-    <img class="featurette-image img-responsive" src="{% static "img/landing/from-anywhere.jpg" %}" alt="Generic placeholder image">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/blurred-future.jpg" %}" alt="Generic placeholder image">
   </div>
 </div>
 
 <hr class="featurette-divider">
+
+<p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+<p><a class="btn btn-primary btn-lg" href="#">Learn more</a></p>
+<p><a class="btn btn-info btn-lg" href="#">Tweet your excitement</a></p>
 {% endblock %}
 
 <!--<p class="lead">thinkbot harnesses the power of a complex compute cluster and offers it to you via a friendly RESTful API.</p>
