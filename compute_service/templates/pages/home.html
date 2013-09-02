@@ -36,8 +36,8 @@
 
 <div class="row featurette">
   <div class="col-md-7">
-    <h2 class="featurette-heading">Something about it being a young product, <span class="text-muted">you can decide how it is going to evolve.</span></h2>
-    <p class="lead">List of upcoming features. Who is interested in it. And how you can support specific features, such as smoothening out the platform of your choice. Finance? Comp. Bio?</p>
+    <h2 class="featurette-heading">Security is baked in. <span class="text-muted">So you can share your data.</span></h2>
+    <p class="lead">SSL encryption, auth. keys, straightforward relationship...</p>
   </div>
   <div class="col-md-5">
     <img class="featurette-image img-responsive" src="{% static "img/landing/spy-glasses.jpg" %}" alt="Privacy and security first">
@@ -56,9 +56,10 @@
   </div>
 </div>
 
-<hr class="featurette-divider">
+<hr style="margin-top: 80px;">
 
-<div class="row">
+<div class="row jumbotron">
+  <p>thinkbot makes it easy for you to run sophisticated scientific software on the cloud.</p>
   <div class="col-md-4 text-center">
     <p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
   </div>
@@ -69,6 +70,4 @@
     <p><a class="btn btn-info btn-lg" href="#">Tweet it!</a></p>
   </div>
 </div>
-
-<hr>
 {% endblock %}
