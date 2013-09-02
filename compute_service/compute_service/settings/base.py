@@ -146,6 +146,8 @@ LOGIN_REDIRECT_URL = 'docs'
 MANDRILL_API_KEY = get_env_variable('TB_MANDRILL_API_KEY')
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 LOCAL_APPS = (
     'jobs',
 )
