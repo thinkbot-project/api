@@ -16,7 +16,7 @@
     <p class="lead">thinkbot&#8217;s friendly <a href="{% url 'docs' %}">RESTful API</a> allows you to easily access complex simulations from anywhere&mdash;a command line, a browser window, or even <a href="https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB" target="_blank">your mobile device</a>!</p>
   </div>
   <div class="col-md-5">
-    <img class="featurette-image img-responsive" src="{% static "img/landing/from-anywhere.jpg" %}" alt="Generic placeholder image">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/from-anywhere.jpg" %}" alt="Access thinkbot from anywhere">
   </div>
 </div>
 
@@ -25,10 +25,10 @@
 <div class="row featurette">
   <div class="col-md-7 col-md-push-5">
     <h2 class="featurette-heading">thinkbot wrangles esoteric software. <span class="text-muted">You can keep your focus on the science.</span></h2>
-<p class="lead">thinkbot&#8217;s <a href="">standard numerical stacks</a> allow you to quickly hit the ground running. You can even define <a href="{% url 'docs' %}#environments">custom environments</a> to share your work with others, without them having to deal with tricky software installation.</p>
+<p class="lead">thinkbot&#8217;s <a href="{% url 'docs' %}#standard-environments">standard numerical stacks</a> allow you to quickly hit the ground running. You can even define <a href="{% url 'docs' %}#environments">custom environments</a> to share your work with others, without them having to deal with tricky software installation.</p>
   </div>
   <div class="col-md-5 col-md-pull-7">
-    <img class="featurette-image img-responsive" src="{% static "img/landing/many-parts.jpg" %}" alt="Generic placeholder image">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/many-parts.jpg" %}" alt="Expertly assembles sophisticated software">
   </div>
 </div>
 
@@ -40,19 +40,35 @@
     <p class="lead">List of upcoming features. Who is interested in it. And how you can support specific features, such as smoothening out the platform of your choice. Finance? Comp. Bio?</p>
   </div>
   <div class="col-md-5">
-    <img class="featurette-image img-responsive" src="{% static "img/landing/blurred-future.jpg" %}" alt="Generic placeholder image">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/spy-glasses.jpg" %}" alt="Privacy and security first">
   </div>
 </div>
 
 <hr class="featurette-divider">
 
-<p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
-<p><a class="btn btn-primary btn-lg" href="{% url 'about' %}">Learn more</a></p>
-<p><a class="btn btn-info btn-lg" href="#">Tweet your excitement</a></p>
-{% endblock %}
+<div class="row featurette">
+  <div class="col-md-7 col-md-push-5">
+    <h2 class="featurette-heading">Something about it being a young product, <span class="text-muted">you can decide how it is going to evolve.</span></h2>
+    <p class="lead">List of upcoming features. Who is interested in it. And how you can support specific features, such as smoothening out the platform of your choice. Finance? Comp. Bio?</p>
+  </div>
+  <div class="col-md-5 col-md-pull-7">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/blurred-future.jpg" %}" alt="The future is hazy and unwritten">
+  </div>
+</div>
 
-<!--<p class="lead">thinkbot harnesses the power of a complex compute cluster and offers it to you via a friendly RESTful API.</p>
-<ul>
-  <li>Publicise the service</li>
-  <li>Try to raise funds for individual features to determine what is interesting for people</li>
-</ul>-->
+<hr class="featurette-divider">
+
+<div class="row">
+  <div class="col-md-4 text-center">
+    <p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+  </div>
+  <div class="col-md-4 text-center">
+    <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}">Learn more</a></p>
+  </div>
+  <div class="col-md-4 text-center">
+    <p><a class="btn btn-info btn-lg" href="#">Tweet it!</a></p>
+  </div>
+</div>
+
+<hr>
+{% endblock %}
