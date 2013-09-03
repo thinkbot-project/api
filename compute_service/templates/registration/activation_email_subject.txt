@@ -1,1 +1,1 @@
-{% load i18n %}{% trans "Account activation on" %} {{ site.name }}
+Activating your account on thinkbot.net

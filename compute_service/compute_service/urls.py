@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^signup/$', RegistrationView.as_view(), name='registration_register'),
     url(r'^signup/complete/$', TemplateView.as_view(template_name='registration/registration_complete.html'), name='registration_complete'),
     url(r'^signup/closed/$', TemplateView.as_view(template_name='registration/registration_closed.html'), name='registration_disallowed'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='auth_logout'),
     (r'', include('registration.auth_urls')),
 
     url(r'^api/v1/', include('jobs.urls')),
