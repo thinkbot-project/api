@@ -11,11 +11,8 @@ body {
   padding: 0 0 60px;
 }
 
-/* Set the fixed height of the footer here */
 #footer {
   height: 60px;
-  background-color: #f5f5f5;
-  border-top: solid 1px #e7e7e7;
 }
 
 .container .credit {
@@ -28,10 +25,36 @@ body {
 }
 
 #footer a {
-  color: #777;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-#footer a:hover {
-  text-decoration: none;
-  color: #333;
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+
+.jumbotron .btn {
+    margin-top: 26px;
+    font-size: 26px;
+    padding: 13px 22px;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.auth {
+  margin: 30px 0;
 }

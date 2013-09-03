@@ -1,10 +1,74 @@
 {% extends "layouts/base.html" %}
+{% load staticfiles %}
 
 {% block content %}
-<h1>Landing and fund-raising page</h1>
-<ul>
-  <li>Publicise the service and highlight its unique value proposition</li>
-  <li>Explain different features</li>
-  <li>Try to raise funds for individual features to determine what is interesting for people</li>
-</ul>
+<div class="jumbotron">
+  <h1>Scientific computing, simplified.</h1>
+  <p>thinkbot makes it easy for you to run sophisticated scientific software on the cloud.</p>
+  <p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-6">
+    <h2 class="featurette-heading">A powerful computing cluster. <span class="text-muted">A user-friendly interface.</span></h2>
+    <p class="lead">thinkbot&#8217;s elegant <a href="{% url 'docs' %}">RESTful API</a> allows you to easily setup and access complex simulations from anywhere&mdash;a command line, a browser window, or even <a href="https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB" target="_blank">your mobile device</a>!</p>
+  </div>
+  <div class="col-md-6">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/from-anywhere.jpg" %}" alt="Access thinkbot from anywhere">
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-6 col-md-push-6">
+    <h2 class="featurette-heading">thinkbot wrangles esoteric software. <span class="text-muted">You keep your focus on science.</span></h2>
+    <p class="lead">thinkbot&#8217;s <a href="{% url 'docs' %}#standard-environments">built-in scientific computing stacks</a> allow you to quickly hit the ground running. You can even define <a href="{% url 'docs' %}#environments">custom environments</a> to share your work with others, without them having to deal with tricky software installation.</p>
+  </div>
+  <div class="col-md-6 col-md-pull-6">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/many-parts.jpg" %}" alt="Expertly assembles sophisticated software">
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-6">
+    <h2 class="featurette-heading">Your data is secure. <span class="text-muted">Your privacy is too.</span></h2>
+<p class="lead">thinkbot&#8217;s financial interests are aligned with providing you a <a href="{% url 'legal' %}#privacy">service that you trust</a>.</p>
+    <p class="lead">All communication with thinkbot goes over SSL, protected with Oauth 2. Computations are carried out in secure sandboxes, and your data are encrypted and backed up on the cloud.</p>
+  </div>
+  <div class="col-md-6">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/spy-glasses.jpg" %}" alt="Privacy and security first">
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-6 col-md-push-6">
+    <h2 class="featurette-heading">thinkbot is a young service. <span class="text-muted">You can guide its evolution.</span></h2>
+    <p class="lead">I&#8217;m working hard on <a href="{% url 'about' %}#features-status">numerous features</a> that I think will benefit computational scientists and educators everywhere. If there&#8217;s something in particular that you&#8217;d like me to focus on, <a href="mailto:mail@harishnarayanan.org">let me know</a>. We can work on it together.</p>
+  </div>
+  <div class="col-md-6 col-md-pull-6">
+    <img class="featurette-image img-responsive" src="{% static "img/landing/blurred-future.jpg" %}" alt="The future is hazy and unwritten">
+  </div>
+</div>
+
+<hr style="margin-top: 80px;">
+
+<div class="row jumbotron">
+  <p>Like how all this sounds?</p>
+  <div class="col-md-4 text-center">
+    <p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try it!</a></p>
+  </div>
+  <div class="col-md-4 text-center">
+    <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}">Learn more</a></p>
+  </div>
+  <div class="col-md-4 text-center">
+    <p><a class="btn btn-info btn-lg" target="_blank" href="https://twitter.com/intent/tweet?text=thinkbot%20makes%20scientific%20computing%20easy.%20Check%20it%20out!&amp;url=https://thinkbot.net/">Tweet it</a></p>
+  </div>
+</div>
 {% endblock %}

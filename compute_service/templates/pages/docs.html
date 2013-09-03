@@ -10,6 +10,9 @@
 <p class="lead">thinkbot provides a friendly and powerful REST API that allows you to run sophisticated scientific software from just about anywhere.</p>
 <p>Following convention, thinkbot&#8217;s API is organised as a <a href="#resources">set of resources</a> that can manipulated with well-defined requests to the service. All requests to the API go over <code>https</code> and use the <code>application/json</code> content type. The base URL to access this current version of the API is <code>https://thinkbot.net/api/v1</code>.</p>
 <p>If you have questions or feedback on the API, please get in <a href="">touch with me</a>.</p>
+{% if not user.is_authenticated %}
+<p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+{% endif %}
 <h2 id="overview">Getting started with the API</h2>
 
 <h3 id="authenticating">Authenticating</h3>
