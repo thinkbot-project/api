@@ -141,7 +141,7 @@ djcelery.setup_loader()
 
 ACCOUNT_ACTIVATION_DAYS = 10
 LOGIN_URL = 'auth_login'
-LOGIN_REDIRECT_URL = 'docs'
+LOGIN_REDIRECT_URL = 'dashboard'
 
 MANDRILL_API_KEY = get_env_variable('TB_MANDRILL_API_KEY')
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
