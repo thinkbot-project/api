@@ -13,6 +13,5 @@ https://thinkbot.net/docs/#getting-started
 Thank you once again for your interest in thinkbot, and please write
 to me if I can assist you in any way with using it.
 
-
 Happy coding,
 Harish Narayanan
