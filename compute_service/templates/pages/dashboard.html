@@ -6,17 +6,24 @@
 {% block content %}
 <div class="row">
   <div class="col-lg-8">
-    <h1>thinkbot Dashboard</h1>
-    <div class="bs-example bs-example-tabs">
-      <ul id="myTab" class="nav nav-tabs">
+
+    <h1>Dashboard</h1>
+
+      <ul id="dashboard_tabs" class="nav nav-tabs">
         <li class="active"><a href="#api" data-toggle="tab">API Credentials</a></li>
         <li><a href="#jobs" data-toggle="tab">Job History</a></li>
+        <li><a href="#account" data-toggle="tab">Account Details</a></li>
       </ul>
-      <div id="myTabContent" class="tab-content">
+
+      <div id="dashboard_tabs" class="tab-content">
+
         <div class="tab-pane fade in active" id="api">
 	  <p>Your Authorization Token for the following REST requests is: <strong>{{ user_token }}</strong></p>
         </div>
+
         <div class="tab-pane fade" id="jobs">
+	  <h2>The status of your jobs</h2>
+	  <p>The following <a href="{% url 'api_root' %}users/{{ user.id }}">HTML interface</a> to the API gives you a deeper look at your jobs, and often comes handy during debugging.</p>
 	  <div class="table-responsive">
 	    <table class="table">
 	      <thead>
@@ -31,7 +38,7 @@
 		{% for job in user.jobs.all %}
 		<tr>
 		  <td>{{ job.id }}</td>
-		  <td><a href="">{{ job.name }}</td>
+		  <td><a href="{% url 'api_root' %}jobs/{{ job.id }}">{{ job.name }}</td>
 		  <td>{{ job.environment }}</td>
 		  <td>{{ job.status }}</td>
 		</tr>
@@ -40,8 +47,13 @@
 	    </table>
           </div>
 	</div>
+
+        <div class="tab-pane fade" id="account">
+	  <p>You&#8217;ll soon be able to edit your profile and payment information here.</p>
+        </div>
+
       </div>
-    </div>
+
   </div>
 </div>
 {% endblock %}
