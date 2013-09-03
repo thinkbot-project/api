@@ -1,13 +1,9 @@
-{% extends "layouts/base.html" %}
+{% extends "layouts/narrow.html" %}
 
 {% block title %}Sign up complete &mdash; thinkbot{% endblock %}
 
-{% block content %}
-<div class="row">
-  <div class="col-lg-8">
-    <h1>Thank you for signing up!</h1>
-    <p>Please activate your account by clicking on the link in the e-mail we&#8217;ve just sent you.</p>
-    <p>And if you&#8217;re eager to get started, head on over to <a href="{% url 'docs' %}#getting-started">thinkbot&#8217;s API documentation</a>.</p>
-  </div>
-</div>
+{% block narrow_content %}
+<h1>Thank you for signing up!</h1>
+<p>Please activate your account by clicking on the link in the e-mail we&#8217;ve just sent you.</p>
+<p>And if you&#8217;re eager to get started, head on over to <a href="{% url 'docs' %}#getting-started">thinkbot&#8217;s API documentation</a>.</p>
 {% endblock %}

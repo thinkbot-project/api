@@ -1,13 +1,9 @@
-{% extends "layouts/base.html" %}
+{% extends "layouts/narrow.html" %}
 
 {% block title %}Activation complete &mdash; thinkbot{% endblock %}
 
-{% block content %}
-<div class="row">
-  <div class="col-lg-8">
-    <h1>Your account is now activated!</h1>
-    <p>You can now <a href="{% url 'auth_login' %}">login to thinkbot</a> and start using it.</p>
-    <p>Please <a href="mailto:support@thinkbot.net">write to me</a> if I can assist you in any way with it.<p>
-  </div>
-</div>
+{% block narrow_content %}
+<h1>Your account is now activated!</h1>
+<p>You can now <a href="{% url 'auth_login' %}">login to thinkbot</a> and start using it.</p>
+<p>Please <a href="mailto:support@thinkbot.net">write to me</a> if I can assist you in any way with it.<p>
 {% endblock %}
