@@ -7,6 +7,7 @@ argparse==1.2.1
 billiard==2.7.3.32
 celery==3.0.22
 distribute==0.7.3
+django-braces==1.2.2
 django-celery==3.0.21
 django-cors-headers==0.11
 django-crispy-forms==1.4.0

@@ -10,8 +10,8 @@ the service:
 
 https://thinkbot.net/docs/#getting-started
 
-Thank you once again for your interest in thinkbot, and please write
-to me if I can assist you in any way with using it.
+If you ever need anything, please let me know. I would love to hear
+any thoughts you have on what you'd find useful.
 
 Happy coding,
 Harish Narayanan
