@@ -14,6 +14,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', views.HomePageView.as_view(), name="home"),
     url(r'^about/$', views.AboutPageView.as_view(), name="about"),
+    url(r'^sponsor-features/$', views.SponsorFeaturesPageView.as_view(), name="sponsor_features"),
     url(r'^docs/$', views.DocsPageView.as_view(), name="docs"),
     url(r'^pricing/$', views.PricingPageView.as_view(), name="pricing"),
     url(r'^support/$', views.SupportPageView.as_view(), name="support"),

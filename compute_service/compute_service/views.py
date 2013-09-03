@@ -16,6 +16,11 @@ class AboutPageView(TemplateView):
     template_name = "pages/about.html"
 
 
+class SponsorFeaturesPageView(TemplateView):
+
+    template_name = "pages/sponsor-features.html"
+
+
 class DocsPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
