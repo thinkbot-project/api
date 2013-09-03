@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^pricing/$', views.PricingPageView.as_view(), name="pricing"),
     url(r'^support/$', views.SupportPageView.as_view(), name="support"),
     url(r'^legal/$', views.LegalPageView.as_view(), name="legal"),
+    url(r'^dashboard/$', views.DashboardPageView.as_view(), name="dashboard"),
 
     url(r'^activate/complete/$', TemplateView.as_view(template_name='registration/activation_complete.html'), name='registration_activation_complete'),
     url(r'^activate/(?P<activation_key>\w+)/$', ActivationView.as_view(), name='registration_activate'),
