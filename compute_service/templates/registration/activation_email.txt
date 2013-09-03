@@ -1,6 +1,18 @@
-{% load i18n %}
-{% trans "Activate account at" %} {{ site.name }}:
+Hello!
 
-http://{{ site.domain }}{% url 'registration_activate' activation_key %}
+Thank you for signing up for thinkbot's compute service! Please
+activate your account by clicking on the following link:
 
-{% blocktrans %}Link is valid for {{ expiration_days }} days.{% endblocktrans %}
+https://thinkbot.net{% url 'registration_activate' activation_key %}
+
+Once activated, the documentation should help you get started with
+the service:
+
+https://thinkbot.net/docs/#getting-started
+
+Thank you once again for your interest in thinkbot, and please write
+to me if I can assist you in any way with using it.
+
+
+Happy coding,
+Harish Narayanan
