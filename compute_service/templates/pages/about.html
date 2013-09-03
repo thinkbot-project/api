@@ -9,20 +9,23 @@
     <ul>
       <li>The philosophy behind the service</li>
       <li>Diagram to illustrate it</li>
+      <li>Hammer home educational uses from grants, MA about</li>
       <li>How many hours have you, or your students or your employees lost deal with exotic compiler flags and incompatible library versions</li>
       <li>More about me&mdash;formally trained in science, general install guru, working on websites since forever, seen enough pitfalls students fall into</li>
       <li>Gallery of interesting uses</li>
-      <li>Will open source the project for $20000</li>
     </ul>
-      {% if not user.is_authenticated %}
-<p>Like how all this sounds?</p>
-<p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
-{% endif %}
-<h2 id="features-status">Development status</h2>
-<h3>Core functionality</h3>
-<h3>Conveniences and efficiency</h3>
-<h3>Security</h3>
-<div class="table-responsive">
+    {% if not user.is_authenticated %}
+    <p>Like how all this sounds?</p>
+    <p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+    {% endif %}
+    <h2 id="features-status">Development Status and Sponsorships</h2>
+    <p>After some enlightening conversations with my <a href="#partners">supportive partners</a>, I&#8217;ve been hard at work on a set of features that I think will benefit computational scientists and educators everywhere. If you find a feature particularly interesting for your problem domain, please do let me know. I would love to hear your thoughts on what you find useful so that I can prioritise what to focus on next.</p>
+    <p>Also, if you&#8217;d like to speed up the development on any of these fronts, please consider sponsoring my time to work on them. I am looking to raise about $5000 each month to focus on thinkbot full-time, and hope to complete most of the following features in about 6 months of full-time effort.</p>
+    <p>In addition to having me prioritise your feature of choice, if you sponsor $1000 or more, you will receive a whole year of premium access to thinkbot. If you sponsor $2500 or more, you will also receive access to the full source code for the project.</p>
+    <h3>Core functionality</h3>
+    <h3>Conveniences and efficiency</h3>
+    <h3>Security</h3>
+    <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
@@ -72,16 +75,15 @@
     </tbody>
   </table>
 </div>
-<p>If you'd like to speed up the development on any of these fronts, please consider sponsoring my time to work on them.</p>
-<h2>Partner organisations</h2>
-Studix, Orobix, Still-water supercomputing etc.
+
+<h1>Partner organisations</h1>
+<p>These guys have been very gracious with their time and encouragement during the development of thinkbot. Thank you all!</p>
+Mechanics Academy, Studix, Orobix, Still-water supercomputing, Umich, UiO etc.
+    <ul>
+      <li>Quotes from other people</li>
+
+    </ul>
 </div>
 </div>
 {% endblock %}
 
-<!--  <li>Try to raise funds for individual features to determine what is interesting for people</li>
-</ul>-->
-<!--I will work with you personally to add support for your software</p>
-
-
-<!--[List of upcoming features. Who is interested in it. And how you can support specific features, such as smoothening out the platform of your choice. Financial modelling? Comp. Bio? Molecular dynamics? Machine learning?]</p>-->
