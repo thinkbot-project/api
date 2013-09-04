@@ -1,6 +1,28 @@
-features = (('Enable SSL throughout the site and API', 100),
-            ('Secure payments with Stripe', 10),
-            ('Play Kanye&#8217;s Yeezus', 60),)
+core = (('Design a general-purpose API that covers a range of scientific computing requirements', 60),
+        ('Support general programs written in Python, Octave and R', 20),
+        ('Support several commonly-used libraries in scientific computing (e.g. FEniCS and matplotlib)', 40),
+        ('Return a range of output formats (e.g. VTK in 2D and 3D, SVG, PNG, and client-renderable JS)', 10),
+        ('Allow for upload/download of large data using popular services (e.g. Google Drive or Dropbox)', 0),)
+
+advanced = (('Easily define custom computational environments with simple recipes (e.g. via Docker or Vagrant)', 0),
+            ('Allow for selective sharing of work environments and data with others', 0),
+            ('Allow for more dynamic interaction with the service (e.g. via sockets) for GUI apps', 0),
+            ('Allow for session-style interaction (like Mathics or iPython notebooks) for teaching', 0),
+            ('Support the programs of choice for your problem domain (Financial modelling? Computational Biology? Molecular dynamics? Machine learning? Something else awesome? Let me know!)', 0),)
+
+security = (('Enable SSL throughout the site and the API', 100),
+            ('Sandbox running code at the language and OS-level (e.g. using AppArmor)', 30),
+            ('Authorize access to the API with Oauth 2', 20),
+            ('Rate-limit the API to prevent abuse', 0),
+            ('Encrypt and backup data and results', 0),
+            ('Integrate with a modern payment processor (e.g. with Stripe)', 0),)
+
+documentation = (('Document the API in a fun and helpful manner', 20),
+                 ('Implement a beautiful open source HTML5 + AJAX fronted to a highly-used numerical library', 0),
+                 ('Implement an open source edX XBlock to grade and pose computational exercises', 30),)
+
+efficiency = (('Hash input to determine repeated requests', 30),
+              ('Cache output to quickly serve repeated input', 30),)
 
 
 table_head = """<div class="table-responsive">
@@ -63,4 +85,14 @@ def html_table(features):
       print '      </tr>'
   print table_foot
 
-html_table(features)
+
+print "<h2>Core Functionality</h2>"
+html_table(core)
+print "<h2>Advanced Functionality</h2>"
+html_table(advanced)
+print "<h2>Security</h2>"
+html_table(security)
+print "<h2>Documentation and Examples</h2>"
+html_table(documentation)
+print "<h2>Computational Efficiency</h2>"
+html_table(efficiency)

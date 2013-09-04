@@ -27,7 +27,7 @@ Security
 - Rate-limit the API to prevent abuse, 0- Encrypt and backup data and results, 0
 - Integrate with a modern payment processor (e.g. with Stripe), 0
 
- 
+
 Documentation and Examples
 --------------------------
 
