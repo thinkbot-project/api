@@ -18,7 +18,7 @@ class AboutPageView(TemplateView):
 
 class SponsorFeaturesPageView(TemplateView):
 
-    template_name = "pages/sponsor-features.html"
+    template_name = "pages/sponsor.html"
 
 
 class DocsPageView(TemplateView):
