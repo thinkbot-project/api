@@ -19,7 +19,7 @@ security = (('Enable SSL throughout the site and the API', 100),
 
 documentation = (('Document the API in a fun and helpful manner', 20),
                  ('Implement a beautiful, open source HTML5 + AJAX fronted to a highly-used numerical library', 0),
-                 ('Implement an open source edX XBlock to grade and pose computational exercises', 30),)
+                 ('Implement an open source edX XBlock to pose and grade computational exercises', 30),)
 
 efficiency = (('Analyse incoming requests to determine repeated calculations', 30),
               ('Cache output to quickly serve repeated calculations without duplicating effort', 30),)
