@@ -2,9 +2,10 @@
 
 thinkbot harnesses the power of a [complex computing cluster](http://aws.amazon.com/) and offers it to you via a friendly REST API. This allows you easily to setup and access sophisticated simulations from various contexts&mdash;a command line, a browser window, or even your mobile device!
 
-Like how that sounds?
-
-Try thinkbot
+{% if not user.is_authenticated %}
+<p>Like how that sounds?</p>
+<p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+{% endif %}
 
 ## Getting started with thinkbot
 
