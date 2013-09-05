@@ -2,9 +2,9 @@ core = (('Design a general-purpose API that covers a range of scientific computi
         ('Support general programs written in Python, Octave and R', 20),
         ('Support several commonly-used libraries in scientific computing (e.g. FEniCS and matplotlib)', 40),
         ('Return a range of output formats (e.g. VTK in 2D and 3D, SVG, PNG, and client-renderable JS)', 10),
-        ('Allow for upload/download of large data using popular services (e.g. Google Drive or Dropbox)', 0),)
+        ('Allow for upload and download of large data using popular services (e.g. Dropbox or Google Drive)', 0),)
 
-advanced = (('Easily define custom computational environments with simple recipes (e.g. via Docker or Vagrant)', 0),
+advanced = (('Allow for easy definition of custom computational environments with simple recipes (e.g. via Docker or Vagrant)', 0),
             ('Allow for selective sharing of work environments and data with others', 0),
             ('Allow for more dynamic interaction with the service (e.g. via sockets) for GUI apps', 0),
             ('Allow for session-style interaction (like Mathics or iPython notebooks) for teaching', 0),
@@ -12,17 +12,17 @@ advanced = (('Easily define custom computational environments with simple recipe
 
 security = (('Enable SSL throughout the site and the API', 100),
             ('Sandbox running code at the language and OS-level (e.g. using AppArmor)', 30),
-            ('Authorize access to the API with Oauth 2', 20),
+            ('Authorize access to the API with Oauth 2 for safer integration with other services', 20),
             ('Rate-limit the API to prevent abuse', 0),
             ('Encrypt and backup data and results', 0),
             ('Integrate with a modern payment processor (e.g. with Stripe)', 0),)
 
 documentation = (('Document the API in a fun and helpful manner', 20),
-                 ('Implement a beautiful open source HTML5 + AJAX fronted to a highly-used numerical library', 0),
+                 ('Implement a beautiful, open source HTML5 + AJAX fronted to a highly-used numerical library', 0),
                  ('Implement an open source edX XBlock to grade and pose computational exercises', 30),)
 
-efficiency = (('Hash input to determine repeated requests', 30),
-              ('Cache output to quickly serve repeated input', 30),)
+efficiency = (('Analyse incoming requests to determine repeated calculations', 30),
+              ('Cache output to quickly serve repeated calculations without duplicating effort', 30),)
 
 
 table_head = """<div class="table-responsive">
@@ -32,7 +32,7 @@ table_head = """<div class="table-responsive">
         <th>#</th>
         <th>Feature</th>
         <th>Progress</th>
-        <th class="text-center">Contribute</th>
+        <th class="text-center">Sponsor</th>
       </tr>
     </thead>
     <tbody>"""
