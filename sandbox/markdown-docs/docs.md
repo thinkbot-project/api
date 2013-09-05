@@ -24,46 +24,42 @@ Grabbed your key? Then you&#8217;re ready for your very first interaction with t
 
 Once submitted, thinkbot puts your script into a queue and immediately responds with some handy information about your request:
 
-```
-{
-    "url": "http://thinkbot.net/api/v1/jobs/job_id/",
-    "status": "submitted",
-    "owner": "awesome_researcher",
-    "created": "2013-08-22T11:36:58.907Z",
-    "name": "My first thinkbot calculation",
-    "environment": "python27",
-    "code": "print 1 + 2",
-    .
-    .
-    .
-}
-```
+    {
+        "url": "http://thinkbot.net/api/v1/jobs/job_id/",
+        "status": "submitted",
+        "owner": "awesome_researcher",
+        "created": "2013-08-22T11:36:58.907Z",
+        "name": "My first thinkbot calculation",
+        "environment": "python27",
+        "code": "print 1 + 2",
+        .
+        .
+        .
+    }
 
 Notice that this information comes to you serialised as JSON, and that&#8217;s one of the primary ways you&#8217;ll be exchanging information with thinkbot. The critical piece of information here is the `url` field, which lets you know where the script you just submitted resides. We can use this to later check up on the status of our script, as well as retrieve interesting results when it completes.
 
 Let&#8217;s use this location to check up on our simple Python one-liner:
 
-```
-curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
-     -H "Authorization:  Token {{ user_token }}"
-```
+    curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
+         -H "Authorization:  Token {{ user_token }}"
+
 
 thinkbot happily responds with a bunch of information,
 
-```
-{
-    "url": "http://thinkbot.net/api/v1/jobs/job_id/",
-    "status": "completed",
-    .
-    .
-    "code": "print 1 + 2",
-    .
-    .
-    "stdout": "3\n",
-    .
-    .
-}
-```
+    {
+        "url": "http://thinkbot.net/api/v1/jobs/job_id/",
+        "status": "completed",
+        .
+        .
+        "code": "print 1 + 2",
+        .
+        .
+        "stdout": "3\n",
+        .
+        .
+    }
+
 including the fact that your script completed successfully and it printed out `3` to standard out!
 
 This unexciting example gave you a quick taste for how it is to interact with thinkbot. But I trust you&#8217;ll soon start to get excited once you realise:
@@ -78,42 +74,37 @@ Now that I&#8217;ve whet your appetite, let&#8217;s move onto a more substantial
 
 So let&#8217;s get started. [Download the Python script](https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py) we want to run to a convenient location and navigate to it in your terminal. To begin with, let&#8217;s again use `curl` to submit this code to thinkbot.
 
-```
-curl -X POST https://thinkbot.net/api/v1/jobs/
-    -H "Authorization:  Token {{ user_token }}" \
-    -F "name=Twisting a hyperelastic block using thinkbot" \
-    -F "environment=fenics11" \
-    -F "code=<hyperelasticity.py" \
-    -F "variables=u.vtk"
-```
+    curl -X POST https://thinkbot.net/api/v1/jobs/
+        -H "Authorization:  Token {{ user_token }}" \
+        -F "name=Twisting a hyperelastic block using thinkbot" \
+        -F "environment=fenics11" \
+        -F "code=<hyperelasticity.py" \
+        -F "variables=u.vtk"
+
 Notice a few things. We defined the environment this code relies on (FEniCS Project 1.1), we take the code from our `hyperelasticity.py` file, and we request the output variable `u` in VTK format.
 
 Again, thinkbot immediately returns with a bunch of JSON-encoded information about this code you just submitted. But this time you know what you&#8217;re looking for. Grab the URL attribute and check on the status of this code.
 
-```
-curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
-     -H "Authorization:  Token {{ user_token }}"
-```
+    curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
+         -H "Authorization:  Token {{ user_token }}"
 
 If everything went well, you&#8217;ll see:
 
-```
-{
-    "url": "http://thinkbot.net/api/v1/jobs/job_id/",
-    "status": "completed",
-    .
-    .
-    "results": ["https://thinkbot.net/results/job_id/u.vtk"],
-    .
-    .
-}
+    {
+        "url": "http://thinkbot.net/api/v1/jobs/job_id/",
+        "status": "completed",
+        .
+        .
+        "results": ["https://thinkbot.net/results/job_id/u.vtk"],
+        .
+        .
+    }
 
 (If the status indicates that your code is still `running`, wait for a few seconds and retry the `GET` request.) You can now head on over to the results URL, download the results of the computation.
 
-```
-curl -X GET -O https://thinkbot.net/results/job_id/u.vtk \
-     -H "Authorization:  Token {{ user_token }}"
-```
+    curl -X GET -O https://thinkbot.net/results/job_id/u.vtk \
+         -H "Authorization:  Token {{ user_token }}"
+
 
 If you want to admire these beautiful results locally, you need a visualisation program like [Paraview](http://www.paraview.org/).
 

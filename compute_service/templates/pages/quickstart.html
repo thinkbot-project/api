@@ -14,7 +14,7 @@
 (You can copy and paste the code above into your terminal, but remember to change the authentication token to yours!)
 {% endif %}</p>
 <p>Once submitted, thinkbot puts your script into a queue and immediately responds with some handy information about your request:</p>
-<p><code>{
+<pre><code>{
     "url": "http://thinkbot.net/api/v1/jobs/job_id/",
     "status": "submitted",
     "owner": "awesome_researcher",
@@ -25,13 +25,15 @@
     .
     .
     .
-}</code></p>
+}
+</code></pre>
 <p>Notice that this information comes to you serialised as JSON, and that&#8217;s one of the primary ways you&#8217;ll be exchanging information with thinkbot. The critical piece of information here is the <code>url</code> field, which lets you know where the script you just submitted resides. We can use this to later check up on the status of our script, as well as retrieve interesting results when it completes.</p>
 <p>Let&#8217;s use this location to check up on our simple Python one-liner:</p>
-<p><code>curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
-     -H "Authorization:  Token {{ user_token }}"</code></p>
+<pre><code>curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
+     -H "Authorization:  Token {{ user_token }}"
+</code></pre>
 <p>thinkbot happily responds with a bunch of information,</p>
-<p><code>{
+<pre><code>{
     "url": "http://thinkbot.net/api/v1/jobs/job_id/",
     "status": "completed",
     .
@@ -42,8 +44,9 @@
     "stdout": "3\n",
     .
     .
-}</code>
-including the fact that your script completed successfully and it printed out <code>3</code> to standard out!</p>
+}
+</code></pre>
+<p>including the fact that your script completed successfully and it printed out <code>3</code> to standard out!</p>
 <p>This unexciting example gave you a quick taste for how it is to interact with thinkbot. But I trust you&#8217;ll soon start to get excited once you realise:</p>
 <ul>
 <li>You can submit various kinds of code to thinkbot, not just Python one-liners</li>
@@ -53,19 +56,20 @@ including the fact that your script completed successfully and it printed out <c
 <h2>More realistic (and exciting!) usage</h2>
 <p>Now that I&#8217;ve whet your appetite, let&#8217;s move onto a more substantial example. This time, we&#8217;re going to solve a three-dimensional nonlinear elasticity problem using the finite element method. Once more, our code is going to be in Python, but now we&#8217;re going to submit a larger input program (<a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">hyperelasticity.py</a>) and we&#8217;re going to retrieve our solution in the <a href="http://www.vtk.org/">VTK format</a>. The execution of this Python code relies on the <a href="http://fenicsproject.org/">FEniCS Project</a>, which is one of the handy software environments that thinkbot offers.</p>
 <p>So let&#8217;s get started. <a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">Download the Python script</a> we want to run to a convenient location and navigate to it in your terminal. To begin with, let&#8217;s again use <code>curl</code> to submit this code to thinkbot.</p>
-<p><code>curl -X POST https://thinkbot.net/api/v1/jobs/
+<pre><code>curl -X POST https://thinkbot.net/api/v1/jobs/
     -H "Authorization:  Token {{ user_token }}" \
     -F "name=Twisting a hyperelastic block using thinkbot" \
     -F "environment=fenics11" \
     -F "code=&lt;hyperelasticity.py" \
-    -F "variables=u.vtk"</code>
-Notice a few things. We defined the environment this code relies on (FEniCS Project 1.1), we take the code from our <code>hyperelasticity.py</code> file, and we request the output variable <code>u</code> in VTK format.</p>
+    -F "variables=u.vtk"
+</code></pre>
+<p>Notice a few things. We defined the environment this code relies on (FEniCS Project 1.1), we take the code from our <code>hyperelasticity.py</code> file, and we request the output variable <code>u</code> in VTK format.</p>
 <p>Again, thinkbot immediately returns with a bunch of JSON-encoded information about this code you just submitted. But this time you know what you&#8217;re looking for. Grab the URL attribute and check on the status of this code.</p>
-<p><code>curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
-     -H "Authorization:  Token {{ user_token }}"</code></p>
+<pre><code>curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
+     -H "Authorization:  Token {{ user_token }}"
+</code></pre>
 <p>If everything went well, you&#8217;ll see:</p>
-<p>```
-{
+<pre><code>{
     "url": "http://thinkbot.net/api/v1/jobs/job_id/",
     "status": "completed",
     .
@@ -73,10 +77,12 @@ Notice a few things. We defined the environment this code relies on (FEniCS Proj
     "results": ["https://thinkbot.net/results/job_id/u.vtk"],
     .
     .
-}</p>
+}
+</code></pre>
 <p>(If the status indicates that your code is still <code>running</code>, wait for a few seconds and retry the <code>GET</code> request.) You can now head on over to the results URL, download the results of the computation.</p>
-<p><code>curl -X GET -O https://thinkbot.net/results/job_id/u.vtk \
-     -H "Authorization:  Token {{ user_token }}"</code></p>
+<pre><code>curl -X GET -O https://thinkbot.net/results/job_id/u.vtk \
+     -H "Authorization:  Token {{ user_token }}"
+</code></pre>
 <p>If you want to admire these beautiful results locally, you need a visualisation program like <a href="http://www.paraview.org/">Paraview</a>.</p>
 <p>Using <code>curl</code>, thinkbot and Paraview is a fine way of solving this problem and visualising the results, but it isn&#8217;t as cool</p>
 <p>[demonstration of embedding results]</p>
