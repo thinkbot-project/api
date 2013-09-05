@@ -68,7 +68,7 @@ def contribute_icon(progress):
         color = 'success'
 
     if progress < 100:
-        return '<a href="#"><span class="glyphicon glyphicon-heart-empty text-{0}"></span></a>'.format(color)
+        return '<a href="mailto:thinkbot.net?subject=I would like to support a feature"><span class="glyphicon glyphicon-heart-empty text-{0}"></span></a>'.format(color)
     else :
         return '<span class="glyphicon glyphicon-ok text-success"></span>'
 
