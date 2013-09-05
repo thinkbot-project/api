@@ -8,7 +8,7 @@ thinkbot&#8217;s API is organised as a [set of resources](#resources) that can b
 
 You generally need to authenticate with thinkbot when interacting with it. As you&#8217;ll soon see, this is easily done with your personal authentication token, `{{ user_token }}`, that you can find in [your dashboard](/dashboard/). This token is supposed to be unique to you, so please keep it a secret.
 
-Grabbed your key? Then you&#8217;re ready for your very first interaction with thinkbot. We&#8217;re going to submit a one-line Python script using `curl`.
+Grabbed your key? Then you&#8217;re ready for your very first interaction with thinkbot. We&#8217;re going to submit a one-line Python script using curl.
 
 
     curl -X POST https://thinkbot.net/api/v1/jobs/
@@ -66,13 +66,13 @@ This unexciting example gave you a quick taste for how it is to interact with th
 
 * You can submit various kinds of code to thinkbot, not just Python one-liners
 * thinkbot can return numerical results in a variety of formats, not just serialised JSON
-* Any mechanism that can handle standard HTTP request/response can interact with thinkbot, not just `curl`. This includes [specialised clients on iOS devices](https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB) and AJAX, as you&#8217;ll soon see.
+* Any mechanism that can handle standard HTTP request/response can interact with thinkbot, not just curl. This includes [specialised clients on iOS devices](https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB) and AJAX, as you&#8217;ll soon see.
 
 ## More realistic (and exciting!) usage
 
 Now that I&#8217;ve whet your appetite, let&#8217;s move onto a more substantial example. This time, we&#8217;re going to solve a three-dimensional nonlinear elasticity problem using the finite element method. Once more, our code is going to be in Python, but now we&#8217;re going to submit a larger input program ([hyperelasticity.py](https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py)) and we&#8217;re going to retrieve our solution in the [VTK format](http://www.vtk.org/). The execution of this Python code relies on the [FEniCS Project](http://fenicsproject.org/), which is one of the handy software environments that thinkbot offers.
 
-So let&#8217;s get started. [Download the Python script](https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py) we want to run to a convenient location and navigate to it in your terminal. To begin with, let&#8217;s again use `curl` to submit this code to thinkbot.
+So let&#8217;s get started. [Download the Python script](https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py) we want to run to a convenient location and navigate to it in your terminal. To begin with, let&#8217;s again use curl to submit this code to thinkbot.
 
     curl -X POST https://thinkbot.net/api/v1/jobs/
         -H "Authorization:  Token {{ user_token }}" \
@@ -108,7 +108,7 @@ If everything went well, you&#8217;ll see:
 
 If you want to admire these beautiful results locally, you need a visualisation program like [Paraview](http://www.paraview.org/).
 
-Using `curl`, thinkbot and Paraview is a fine way of solving this problem and visualising the results, but it isn&#8217;t as cool
+Using curl, thinkbot and Paraview is a fine way of solving this problem and visualising the results, but it isn&#8217;t as cool
 
 [demonstration of embedding results]
 
