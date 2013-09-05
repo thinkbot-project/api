@@ -1,29 +1,17 @@
-{% extends "layouts/base.html" %}
+{% extends "layouts/narrow.html" %}
 
 {% block title %}Sponsor thinkbot features{% endblock %}
 
-{% block content %}
-<div class="row">
-  <div class="col-lg-8">
-    <h1 id="features-status">Development Status and Sponsorships</h1>
-    <p>After some enlightening conversations with my <a href="{% url 'about' %}#partners">supportive partners</a>, I&#8217;ve been hard at work on a set of features that I think will benefit computational scientists and educators everywhere. If you find a feature particularly interesting for your problem domain, please do let me know. I would love to hear your thoughts on what you find useful so that I can better prioritise what to focus on next.</p>
-    <p>Also, if you&#8217;d like to speed up the development on any of these fronts, please consider sponsoring my time to work on them. I am looking to raise about $5000 each month to focus on thinkbot full-time, and hope to complete most of the following features in about 6 months of full-time effort.</p>
-    <p>In addition to having me prioritise your feature of choice, if you sponsor $1000 or more, you will receive a whole year of premium access to thinkbot. If you sponsor $2500 or more, you will also receive access to the full source code for the project.</p>
-    <p>Please <a href="mailto:support@thinkbot.net?subject=Sponsoring thinkbot development">get in touch</a> if this is interests you.</p>
-  </div>
-</div>
+{% block narrow_content %}
+<h1 id="features-status">Sponsorships and Development Status</h1>
+<p>After some enlightening conversations with my <a href="{% url 'about' %}#partners">supportive partners</a>, I&#8217;ve been hard at work on the following set of features that I think will benefit computational scientists and educators everywhere. If you find a feature particularly interesting for your problem domain, please do <a href="mailto:support@thinkbot.net?subject=thinkbot feature suggestion">let me know</a>. I would love to hear your thoughts on what you find useful so that I can better prioritise what to focus on next.</p>
+<p>Also, if you&#8217;d like to speed up development on any of these fronts, please consider sponsoring my time to work on them. I am looking to raise about $5000 each month to focus on thinkbot full-time, and hope to complete a bulk of these features in about 6&ndash;8 months of full-time effort.</p>
+<p>In addition to having me prioritise your feature of choice, if you sponsor $1250 or more, you will receive a whole year of access to thinkbot with support. If you sponsor $2500 or more, you will also receive access to the full source code for the project.</p>
+<p>Please <a href="mailto:support@thinkbot.net?subject=I'd like to sponsor thinkbot development">get in touch</a> if you&#8217;d like to support my efforts.</p>
 {% include "pages/features.html" %}
 {% endblock %}
 
-
-
-
 <!--
-
-- Embed calculation from TB directly on fund page
-- Point out that I've been doing this on my own, and that your contributions will
-  allow me to polish exiting features and build out a complete product
 - All contributors get early access to the service
 - Larger contributors get to select which features get built out
-
 -->
