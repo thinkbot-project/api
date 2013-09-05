@@ -2,18 +2,26 @@
 
 {% block title %}API Documentation &mdash; thinkbot{% endblock %}
 
-{% block narrow_content %}
+
 {% if user.is_authenticated %}
 <div class="alert alert-success">
   Welcome {{ user.username }}. Your Authorization Token for the following REST requests is: <strong>{{ user_token }}</strong>.
 </div>
 {% endif %}
 
-    {% include 'pages/quickstart.html' %}
+{% block narrow_content %}
+<h1>thinkbot API <small>v1.0</small></h1>
 
+<p>thinkbot harnesses the power of a <a href="http://aws.amazon.com/">complex computing cluster</a> and offers it to you via a friendly REST API. This allows you easily to setup and access sophisticated simulations from various contexts&mdash;a command line, a browser window, or even your mobile device!</p>
 
+{% if not user.is_authenticated %}
+<p>Like how that sounds?</p>
+<p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
+{% endif %}
 
-<h2 id="resources">All resources</h2>
+{% include 'pages/quickstart.html' %}
+
+<h2 id="resources">All Resources and Endpoints</h2>
 
 <h3 id="users">Users</h3>
 <div class="table-responsive">

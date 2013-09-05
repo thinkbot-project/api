@@ -1,22 +1,18 @@
-<h1>thinkbot API v1.0</h1>
-<p>thinkbot harnesses the power of a <a href="http://aws.amazon.com/">complex computing cluster</a> and offers it to you via a friendly REST API. This allows you easily to setup and access sophisticated simulations from various contexts&mdash;a command line, a browser window, or even your mobile device!</p>
-<p>{% if not user.is_authenticated %}
-<p>Like how that sounds?</p>
-<p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
-{% endif %}</p>
 <h2>Getting started with thinkbot</h2>
-<p>thinkbot's API is organised as a <a href="#resources">set of resources</a> that can be manipulated with well-defined requests to the service. All requests to thinkbot are required to be over SSL and begin with:</p>
+<p>thinkbot&#8217;s API is organised as a <a href="#resources">set of resources</a> that can be manipulated with well-defined requests to the service. All requests to thinkbot are required to be over SSL and begin with:</p>
 <pre><code>https://thinkbot.net/api/v1/
 </code></pre>
-<p>You generally need to authenticate with thinkbot when interacting with it. As you'll soon see, this is easily done with your personal authentication token, <code>superlonggibberishstring</code>, that you can find in <a href="https://thinkbot.net/dashboard/">your dashboard</a>. This token is supposed to be unique to you, so please keep it a secret.</p>
-<p>Grabbed your key? Then you're ready for your very first interaction with thinkbot. We're going to submit a one-line Python script using <code>curl</code>.</p>
+<p>You generally need to authenticate with thinkbot when interacting with it. As you&#8217;ll soon see, this is easily done with your personal authentication token, <code>{{ user_token }}</code>, that you can find in <a href="/dashboard/">your dashboard</a>. This token is supposed to be unique to you, so please keep it a secret.</p>
+<p>Grabbed your key? Then you&#8217;re ready for your very first interaction with thinkbot. We&#8217;re going to submit a one-line Python script using <code>curl</code>.</p>
 <pre><code>curl -X POST https://thinkbot.net/api/v1/jobs/
-     -H "Authorization:  Token superlonggibberishstring" \
+     -H "Authorization:  Token {{ user_token }}" \
      -F "name=My first thinkbot calculation" \
      -F "environment=python27" \
      -F "code=print 1 + 2"
 </code></pre>
-<p>(You can copy and paste the code above into your terminal, but remember to change the authentication token to yours!)</p>
+<p>{% if not user.is_authenticated %}
+(You can copy and paste the code above into your terminal, but remember to change the authentication token to yours!)
+{% endif %}</p>
 <p>Once submitted, thinkbot puts your script into a queue and immediately responds with some handy information about your request:</p>
 <p><code>{
     "url": "http://thinkbot.net/api/v1/jobs/job_id/",
@@ -30,10 +26,10 @@
     .
     .
 }</code></p>
-<p>Notice that this information comes to you serialised as JSON, and that's one of the primary ways you'll be exchanging information with thinkbot. The critical piece of information here is the <code>url</code> field, which lets you know where the script you just submitted resides. We can use this to later check up on the status of our script, as well as retrieve interesting results when it completes.</p>
-<p>Let's use this location to check up on our simple Python one-liner:</p>
+<p>Notice that this information comes to you serialised as JSON, and that&#8217;s one of the primary ways you&#8217;ll be exchanging information with thinkbot. The critical piece of information here is the <code>url</code> field, which lets you know where the script you just submitted resides. We can use this to later check up on the status of our script, as well as retrieve interesting results when it completes.</p>
+<p>Let&#8217;s use this location to check up on our simple Python one-liner:</p>
 <p><code>curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
-     -H "Authorization:  Token superlonggibberishstring"</code></p>
+     -H "Authorization:  Token {{ user_token }}"</code></p>
 <p>thinkbot happily responds with a bunch of information,</p>
 <p><code>{
     "url": "http://thinkbot.net/api/v1/jobs/job_id/",
@@ -48,26 +44,26 @@
     .
 }</code>
 including the fact that your script completed successfully and it printed out <code>3</code> to standard out!</p>
-<p>This unexciting example gave you a quick taste for how it is to interact with thinkbot. But I trust you'll soon start to get excited once you realise:</p>
+<p>This unexciting example gave you a quick taste for how it is to interact with thinkbot. But I trust you&#8217;ll soon start to get excited once you realise:</p>
 <ul>
 <li>You can submit various kinds of code to thinkbot, not just Python one-liners</li>
 <li>thinkbot can return numerical results in a variety of formats, not just serialised JSON</li>
-<li>Any mechanism that can handle standard HTTP request/response can interact with thinkbot, not just <code>curl</code>. This includes <a href="https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB">specialised clients on iOS devices</a> and AJAX, as you'll soon see.</li>
+<li>Any mechanism that can handle standard HTTP request/response can interact with thinkbot, not just <code>curl</code>. This includes <a href="https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB">specialised clients on iOS devices</a> and AJAX, as you&#8217;ll soon see.</li>
 </ul>
 <h2>More realistic (and exciting!) usage</h2>
-<p>Now that I've whet your appetite, let's move onto a more substantial example. This time, we're going to solve a three-dimensional nonlinear elasticity problem using the finite element method. Once more, our code is going to be in Python, but now we're going to submit a larger input program (<a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">hyperelasticity.py</a>) and we're going to retrieve our solution in the <a href="http://www.vtk.org/">VTK format</a>. The execution of this Python code relies on the <a href="http://fenicsproject.org/">FEniCS Project</a>, which is one of the handy software environments that thinkbot offers.</p>
-<p>So let's get started. <a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">Download the Python script</a> we want to run to a convenient location and navigate to it in your terminal. To begin with, let's again use <code>curl</code> to submit this code to thinkbot.</p>
+<p>Now that I&#8217;ve whet your appetite, let&#8217;s move onto a more substantial example. This time, we&#8217;re going to solve a three-dimensional nonlinear elasticity problem using the finite element method. Once more, our code is going to be in Python, but now we&#8217;re going to submit a larger input program (<a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">hyperelasticity.py</a>) and we&#8217;re going to retrieve our solution in the <a href="http://www.vtk.org/">VTK format</a>. The execution of this Python code relies on the <a href="http://fenicsproject.org/">FEniCS Project</a>, which is one of the handy software environments that thinkbot offers.</p>
+<p>So let&#8217;s get started. <a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">Download the Python script</a> we want to run to a convenient location and navigate to it in your terminal. To begin with, let&#8217;s again use <code>curl</code> to submit this code to thinkbot.</p>
 <p><code>curl -X POST https://thinkbot.net/api/v1/jobs/
-    -H "Authorization:  Token superlonggibberishstring" \
+    -H "Authorization:  Token {{ user_token }}" \
     -F "name=Twisting a hyperelastic block using thinkbot" \
     -F "environment=fenics11" \
     -F "code=&lt;hyperelasticity.py" \
     -F "variables=u.vtk"</code>
 Notice a few things. We defined the environment this code relies on (FEniCS Project 1.1), we take the code from our <code>hyperelasticity.py</code> file, and we request the output variable <code>u</code> in VTK format.</p>
-<p>Again, thinkbot immediately returns with a bunch of JSON-encoded information about this code you just submitted. But this time you know what you're looking for. Grab the URL attribute and check on the status of this code.</p>
+<p>Again, thinkbot immediately returns with a bunch of JSON-encoded information about this code you just submitted. But this time you know what you&#8217;re looking for. Grab the URL attribute and check on the status of this code.</p>
 <p><code>curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
-     -H "Authorization:  Token superlonggibberishstring"</code></p>
-<p>If everything went well, you'll see:</p>
+     -H "Authorization:  Token {{ user_token }}"</code></p>
+<p>If everything went well, you&#8217;ll see:</p>
 <p>```
 {
     "url": "http://thinkbot.net/api/v1/jobs/job_id/",
@@ -80,12 +76,12 @@ Notice a few things. We defined the environment this code relies on (FEniCS Proj
 }</p>
 <p>(If the status indicates that your code is still <code>running</code>, wait for a few seconds and retry the <code>GET</code> request.) You can now head on over to the results URL, download the results of the computation.</p>
 <p><code>curl -X GET -O https://thinkbot.net/results/job_id/u.vtk \
-     -H "Authorization:  Token superlonggibberishstring"</code></p>
+     -H "Authorization:  Token {{ user_token }}"</code></p>
 <p>If you want to admire these beautiful results locally, you need a visualisation program like <a href="http://www.paraview.org/">Paraview</a>.</p>
-<p>Using <code>curl</code>, thinkbot and Paraview is a fine way of solving this problem and visualising the results, but it isn't as cool</p>
+<p>Using <code>curl</code>, thinkbot and Paraview is a fine way of solving this problem and visualising the results, but it isn&#8217;t as cool</p>
 <p>[demonstration of embedding results]</p>
 <p>[corresponding ajax snippet]</p>
 <p>[poing to thinkbot example on MA]</p>
-<p>Which means, any such scientific calculation can be shown to (or even edited, if you'd like that) by anyone with a URL.</p>
-<p>And that's cool.</p>
-<p>And if you've made it this far, congratulations! You now have a good overview of what thinkbot can do for you. For specific details, do look at the complete list of API <a href="#resources">resources</a> and endpoints below. Remember thinkbot's API and this documentation is a work in progress. If you have any questions or feedback, please <a href="mailto:support@thinkbot.net">get in touch with me</a>.</p>
+<p>Which means, any such scientific calculation can be shown to (or even edited, if you&#8217;d like that) by anyone with a URL.</p>
+<p>And that&#8217;s cool.</p>
+<p>And if you&#8217;ve made it this far, congratulations! You now have a good overview of what thinkbot can do for you. For specific details, do look at the complete list of API <a href="#resources">resources</a> and endpoints below. Remember thinkbot&#8217;s API and this documentation is a work in progress. If you have any questions or feedback, please <a href="mailto:support@thinkbot.net">get in touch with me</a>.</p>

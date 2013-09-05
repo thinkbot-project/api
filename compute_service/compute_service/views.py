@@ -27,8 +27,9 @@ class DocsPageView(TemplateView):
         context = super(DocsPageView, self).get_context_data(**kwargs)
 
         if self.request.user.is_authenticated():
-            print self.request.user
             context['user_token'] = Token.objects.get(user=self.request.user)
+        else:
+            context['user_token'] = 'superlonggibberishstring'
         return context
 
     template_name = "pages/docs.html"
