@@ -1,70 +1,29 @@
-{% extends "layouts/narrow.html" %}
+{% extends "layouts/base.html" %}
 
-{% block title %}About thinkbot{% endblock %}
+{% block title %}Sponsor thinkbot features{% endblock %}
 
-{% block narrow_content %}
-<h1 id="features-status">Development Status and Sponsorships</h1>
-<p>After some enlightening conversations with my <a href="{% url 'about' %}#partners">supportive partners</a>, I&#8217;ve been hard at work on a set of features that I think will benefit computational scientists and educators everywhere. If you find a feature particularly interesting for your problem domain, please do let me know. I would love to hear your thoughts on what you find useful so that I can better prioritise what to focus on next.</p>
-<p>Also, if you&#8217;d like to speed up the development on any of these fronts, please consider sponsoring my time to work on them. I am looking to raise about $5000 each month to focus on thinkbot full-time, and hope to complete most of the following features in about 6 months of full-time effort.</p>
-<p>In addition to having me prioritise your feature of choice, if you sponsor $1000 or more, you will receive a whole year of premium access to thinkbot. If you sponsor $2500 or more, you will also receive access to the full source code for the project.</p>
-<p>Please <a href="mailto:support@thinkbot.net?subject=Sponsoring thinkbot development">get in touch</a> if this is interests you.</p>
-
-<h2>Core functionality</h2>
-
-
-<h2>Conveniences and efficiency</h2>
-
-<h2>Security</h2>
-
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Feature</th>
-        <th>Progress</th>
-        <th class="text-center">Contribute</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Enable SSL throughout the site and API</td>
-        <td>
-          <div class="progress">
-	    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-	      <span class="sr-only">100% Complete (success)</span>
-	    </div>
-	  </div>
-        </td>
-        <td class="text-center"><span class="glyphicon glyphicon-ok text-success"></span></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Secure payments with Stripe</td>
-        <td>
-          <div class="progress">
-	    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
-	      <span class="sr-only">10% Complete (danger)</span>
-	    </div>
-	  </div>
-        </td>
-        <td class="text-center"><a href="#"><span class="glyphicon glyphicon-heart-empty text-danger"></span></a></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Play Kanye&#8217;s Yeezus</td>
-        <td>
-          <div class="progress">
-	    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
-	      <span class="sr-only">60% Complete (warning)</span>
-	    </div>
-	  </div>
-        </td>
-        <td class="text-center"><a href="#"><span class="glyphicon glyphicon-heart-empty text-warning"></span></a></td>
-      </tr>
-    </tbody>
-  </table>
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <h1 id="features-status">Development Status and Sponsorships</h1>
+    <p>After some enlightening conversations with my <a href="{% url 'about' %}#partners">supportive partners</a>, I&#8217;ve been hard at work on a set of features that I think will benefit computational scientists and educators everywhere. If you find a feature particularly interesting for your problem domain, please do let me know. I would love to hear your thoughts on what you find useful so that I can better prioritise what to focus on next.</p>
+    <p>Also, if you&#8217;d like to speed up the development on any of these fronts, please consider sponsoring my time to work on them. I am looking to raise about $5000 each month to focus on thinkbot full-time, and hope to complete most of the following features in about 6 months of full-time effort.</p>
+    <p>In addition to having me prioritise your feature of choice, if you sponsor $1000 or more, you will receive a whole year of premium access to thinkbot. If you sponsor $2500 or more, you will also receive access to the full source code for the project.</p>
+    <p>Please <a href="mailto:support@thinkbot.net?subject=Sponsoring thinkbot development">get in touch</a> if this is interests you.</p>
+  </div>
 </div>
+{% include "pages/features.html" %}
 {% endblock %}
 
+
+
+
+<!--
+
+- Embed calculation from TB directly on fund page
+- Point out that I've been doing this on my own, and that your contributions will
+  allow me to polish exiting features and build out a complete product
+- All contributors get early access to the service
+- Larger contributors get to select which features get built out
+
+-->
