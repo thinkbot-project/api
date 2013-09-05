@@ -15,7 +15,46 @@
 {% if not user.is_authenticated %}
 <p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
 {% endif %}
+<h2 id="getting-started-with-thinkbot">Getting started with thinkbot</h2>
+<p>thinkbot harnesses the power of a <a href="http://aws.amazon.com/">complex computing cluster</a> and offers it to you via a friendly REST API. This allows you easily to setup and access sophisticated simulations from various contexts&mdash;a command line, a browser window, or even your mobile device!</p>
+<p>All requests to thinkbot are required to be over SSL and begin with:</p>
+<pre class="prettyprint lang-py"><code>https://thinkbot.net/api/v1/
+</code></pre>
+<p>You generally need to authenticate with thinkbot when interacting with it. This is easily done as you'll soon see with your personal authentication token, <code>superlonggibberishstring</code>, that you can find in <a href="https://thinkbot.net/dashboard/">your dashboard</a>. Please keep this a secret.</p>
+<p>You're now ready for your very first interaction with thinkbot. We're going to submit a one-line Python script using <code>curl</code>.</p>
+<pre class="prettyprint lang-py"><code>curl -X POST https://thinkbot.net/api/v1/jobs/
+     -H "Authorization:  Token superlonggibberishstring" \
+     -F "name=My first thinkbot calculation" \
+     -F "environment=python27" \
+     -F "code=print 1 + 2"
+</code></pre>
+<p>Once submitted, thinkbot puts your script into a queue and immediately responds with some handy information about your request:</p>
+<pre class="prettyprint lang-py"><code>{
+    "url": "http://thinkbot.net/api/v1/jobs/job_id/",
+    "status": "submitted",
+    "owner": "researcher",
+    "created": "2013-08-22T11:36:58.907Z",
+    "name": "My first thinkbot calculation",
+    "environment": "python27",
+    "code": "print 1 + 2",
+    .
+    .
+    .
+}
+</code></pre>
+<p>The critical piece of information here is the <code>url</code> field. This is how you can look up the status of your script in the future, as well as retrieve interesting results from it. So let's use it to check up on our simple Python one-liner:</p>
+<pre class="prettyprint lang-py"><code>curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
+     -H "Authorization:  Token superlonggibberishstring"
+</code></pre>
+<h2 id="more-realistic-usage">More realistic usage</h2>
+<p>thinkbot supports a variety of programming environments </p>
+<p>The simplest way to interact with thinkbot is to submit some code that you'd like to run,</p>
+<p><code>curl -X PUT https://thinkbot.net/api/v1/jobs/</code></p>
+
+
 <h2 id="overview">Getting started with the API</h2>
+
+
 
 <h3 id="authenticating">Authenticating</h3>
 <p class="text-muted">To be written.</p>
