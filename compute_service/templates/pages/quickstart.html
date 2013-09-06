@@ -3,8 +3,8 @@
 <pre><code>https://thinkbot.net/api/v1/
 </code></pre>
 <p>You generally need to authenticate with thinkbot when interacting with it. As you&#8217;ll soon see, this is easily done with your personal authentication token, <code>{{ user_token }}</code>, that you can find in <a href="/dashboard/">your dashboard</a>. This token is supposed to be unique to you, so please keep it a secret.</p>
-<p>Grabbed your key? Then you&#8217;re ready for your very first interaction with thinkbot. We&#8217;re going to submit a one-line Python script using curl.</p>
-<pre><code>curl -X POST https://thinkbot.net/api/v1/jobs/
+<p>Grabbed your key? Then you&#8217;re ready for your very first interaction with thinkbot. We&#8217;re going to ask it to add two numbers using a one-line Python script that we&#8217;re going to submit using curl. Open a terminal window and type the following command:</p>
+<pre><code>curl -X POST https://thinkbot.net/api/v1/jobs/ \
      -H "Authorization:  Token {{ user_token }}" \
      -F "name=My first thinkbot calculation" \
      -F "environment=python27" \
@@ -15,7 +15,7 @@
 {% endif %}</p>
 <p>Once submitted, thinkbot puts your script into a queue and immediately responds with some handy information about your request:</p>
 <pre><code>{
-    "url": "http://thinkbot.net/api/v1/jobs/job_id/",
+    "url": "https://thinkbot.net/api/v1/jobs/job_id/",
     "status": "submitted",
     "owner": "awesome_researcher",
     "created": "2013-08-22T11:36:58.907Z",
@@ -27,14 +27,14 @@
     .
 }
 </code></pre>
-<p>Notice that this information comes to you serialised as JSON, and that&#8217;s one of the primary ways you&#8217;ll be exchanging information with thinkbot. The critical piece of information here is the <code>url</code> field, which lets you know where the script you just submitted resides. We can use this to later check up on the status of our script, as well as retrieve interesting results when it completes.</p>
-<p>Let&#8217;s use this location to check up on our simple Python one-liner:</p>
+<p>Notice that this information comes to you serialised as JSON, and that&#8217;s one of the primary ways you&#8217;ll be exchanging data with thinkbot. The critical pieces of information here are the <code>status</code> field, which lets you know your code has been submitted to thinkbot and the <code>url</code> field, <code>https://thinkbot.net/api/v1/jobs/job_id/</code>, which lets you know where the script you just submitted resides. We can use this URL to later check up on the status of our script, as well as retrieve interesting results when it completes.</p>
+<p>Let&#8217;s use this URL to check up on our simple Python one-liner:</p>
 <pre><code>curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
      -H "Authorization:  Token {{ user_token }}"
 </code></pre>
 <p>thinkbot happily responds with a bunch of information,</p>
 <pre><code>{
-    "url": "http://thinkbot.net/api/v1/jobs/job_id/",
+    "url": "https://thinkbot.net/api/v1/jobs/job_id/",
     "status": "completed",
     .
     .
@@ -46,17 +46,18 @@
     .
 }
 </code></pre>
-<p>including the fact that your script completed successfully and it printed out <code>3</code> to standard out!</p>
-<p>This unexciting example gave you a quick taste for how it is to interact with thinkbot. But I trust you&#8217;ll soon start to get excited once you realise:</p>
+<p>including the fact that your script <code>completed</code> successfully and that it printed the number <code>3</code> to standard output. So there you have it, we submitted a simple calculation to thinkbot and it got back to us with the right answer.</p>
+<p>This first example gave  a quick taste for how it is to interact with thinkbot, but it was remarkably unexciting. But hang in there, things start getting much more exciting once you realise:</p>
 <ul>
-<li>You can submit various kinds of code to thinkbot, not just Python one-liners</li>
+<li>You can submit all kinds of sophisticated code to thinkbot involving various languages and scientific computing libraries, not just Python one-liners</li>
 <li>thinkbot can return numerical results in a variety of formats, not just serialised JSON</li>
 <li>Any mechanism that can handle standard HTTP request/response can interact with thinkbot, not just curl. This includes <a href="https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB">specialised clients on iOS devices</a> and AJAX, as you&#8217;ll soon see.</li>
 </ul>
+<p>So let's get on with it.</p>
 <h2>More realistic (and exciting!) usage</h2>
 <p>Now that I&#8217;ve whet your appetite, let&#8217;s move onto a more substantial example. This time, we&#8217;re going to solve a three-dimensional nonlinear elasticity problem using the finite element method. Once more, our code is going to be in Python, but now we&#8217;re going to submit a larger input program (<a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">hyperelasticity.py</a>) and we&#8217;re going to retrieve our solution in the <a href="http://www.vtk.org/">VTK format</a>. The execution of this Python code relies on the <a href="http://fenicsproject.org/">FEniCS Project</a>, which is one of the handy software environments that thinkbot offers.</p>
 <p>So let&#8217;s get started. <a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">Download the Python script</a> we want to run to a convenient location and navigate to it in your terminal. To begin with, let&#8217;s again use curl to submit this code to thinkbot.</p>
-<pre><code>curl -X POST https://thinkbot.net/api/v1/jobs/
+<pre><code>curl -X POST https://thinkbot.net/api/v1/jobs/ \
     -H "Authorization:  Token {{ user_token }}" \
     -F "name=Twisting a hyperelastic block using thinkbot" \
     -F "environment=fenics11" \
@@ -70,7 +71,7 @@
 </code></pre>
 <p>If everything went well, you&#8217;ll see:</p>
 <pre><code>{
-    "url": "http://thinkbot.net/api/v1/jobs/job_id/",
+    "url": "https://thinkbot.net/api/v1/jobs/job_id/",
     "status": "completed",
     .
     .
