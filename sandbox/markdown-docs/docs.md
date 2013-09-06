@@ -39,7 +39,7 @@ Once submitted, thinkbot puts your script into a queue and immediately responds 
         .
     }
 
-Notice that this information comes to you serialised as JSON, and that&#8217;s one of the primary ways you&#8217;ll be exchanging data with thinkbot. The critical pieces of information here are the `status` field, which lets you know your code has been submitted to thinkbot and the `url` field, `https://thinkbot.net/api/v1/jobs/job_id/`, which lets you know where the script you just submitted resides. We can use this URL to later check up on the status of our script, as well as retrieve interesting results when it completes.
+Notice that this information comes to you serialised as JSON, and that&#8217;s one of the primary ways you&#8217;ll be exchanging data with thinkbot. The critical pieces of information here are the `status` field, which lets you know your code has been submitted to thinkbot and the `url` field, `https://thinkbot.net/api/v1/jobs/job_id/`, which lets you know where the script you&#8217;ve just submitted resides. We can use this URL to later check up on the status of our script, as well as retrieve interesting results when it completes.
 
 Let&#8217;s use this URL to check up on our simple Python one-liner:
 
@@ -68,11 +68,11 @@ This first example gave  a quick taste for how it is to interact with thinkbot, 
 
 1. **You can submit all kinds of sophisticated code to thinkbot** involving various languages and scientific computing libraries, not just Python one-liners
 2. **thinkbot can return numerical results in a variety of formats**, not just serialised JSON
-3. **Any mechanism that can handle standard HTTP request/response can interact with thinkbot**, not just curl on the command-line. This includes [specialised clients on iOS devices](https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB) and AJAX, as you&#8217;ll soon see.
+3. **Any mechanism that can handle standard HTTP request/response can interact with thinkbot**, not just curl on the command-line. This includes [clients on iOS devices](https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB) and Ajax, as you&#8217;ll soon see.
 
-## More realistic (and exciting!) usage
+## More realistic usage
 
-Now that I&#8217;ve whet your appetite, let&#8217;s move onto a more substantial example. This time, we&#8217;re going to solve a three-dimensional nonlinear elasticity problem using the finite element method. Once more, our code is going to be in Python, but now we&#8217;re going to submit a larger input program ([hyperelasticity.py](https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py)) and we&#8217;re going to retrieve our solution in the [VTK format](http://www.vtk.org/). The execution of this Python code relies on the [FEniCS Project](http://fenicsproject.org/), which is one of the handy software environments that thinkbot offers.
+Now that I&#8217;ve whet your appetite, let&#8217;s move onto a more substantial example. This time, we&#8217;re going to solve a three-dimensional nonlinear elasticity problem using the finite element method. Once more, our code is going to be in Python, but now we&#8217;re going to submit a larger input program ([hyperelasticity.py](https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py)) and we&#8217;re going to request our solution in the [VTK format](http://www.vtk.org/). The execution of this Python code relies on the [FEniCS Project](http://fenicsproject.org/), which is one of the [handy software environments](#environments) that thinkbot offers.
 
 So let&#8217;s get started. [Download the Python script](https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py) we want to run to a convenient location and navigate to it in your terminal. To begin with, let&#8217;s again use curl to submit this code to thinkbot.
 
@@ -83,14 +83,14 @@ So let&#8217;s get started. [Download the Python script](https://thinkbot.net/as
         -F "code=<hyperelasticity.py" \
         -F "variables=u.vtk"
 
-Notice a few things. We&#8217;ve now defined that the environment this code relies on is `fenics11` (FEniCS Project 1.1), that we intend to submit code from our `hyperelasticity.py` file, and that we&#8217;d like to request the output variable `u` (defined in our code) in VTK format.
+Notice a few things. We&#8217;ve now defined that the environment this code relies on is `fenics11` (FEniCS Project 1.1), that we intend to submit code from our `hyperelasticity.py` file, and that we&#8217;d like to have the output variable `u` (defined in our Python code) in VTK format.
 
 Again, thinkbot immediately returns with a bunch of JSON-encoded information about the code we just `submitted`. But this time you know what to look for. Grab the `url` attribute from the response and check on the status of our submission.
 
     curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
          -H "Authorization:  Token {{ user_token }}"
 
-If everything went well, you&#8217;ll see the following. If the status indicates that your code is still `running`, wait for a few seconds and retry the `GET` request.
+If everything went well, you&#8217;ll see the following:
 
     {
         "url": "https://thinkbot.net/api/v1/jobs/job_id/",
@@ -102,25 +102,53 @@ If everything went well, you&#8217;ll see the following. If the status indicates
         .
     }
 
-Voil&agrave;! thinkbot has successfully `completed` running our code and the results we asked for are waiting for us in the `results` URL. You can now head on over to this URL and download the results of the computation.
+Voil&agrave;! thinkbot has successfully `completed` running our code and the result we asked for is waiting for us in the `results` URL. (If the status indicates that your code is still `running`, wait for a few seconds and retry the `GET` request.) You can now head on over to this URL and download the result of the computation.
 
     curl -X GET -O https://thinkbot.net/results/job_id/u.vtk \
          -H "Authorization:  Token {{ user_token }}"
 
 If you want to admire these beautiful results locally, you need a visualisation program like [Paraview](http://www.paraview.org/). If you setup such a program and open `u.vtk`, you&#8217;ll be greeted with the following, which you can play with and analyse.
 
-<img class="featurette-image img-responsive" src="{% static "img/docs/examples/hyperelasticity.png" %}" alt="Sample thinkbot output visualised in external software">
+<img class="img-responsive" src="{% static "img/docs/examples/hyperelasticity.png" %}" alt="Sample thinkbot output visualised in external software">
 
-Using curl, thinkbot and Paraview is a fine way of solving this problem and visualising the results, but it isn&#8217;t as cool
+## More exciting usage
 
-[demonstration of embedding results]
+Using curl to communicate with thinkbot and Paraview to visualise the results is a reasonable way of solving the scientific problem at hand, but it isn&#8217;t as cool (or convenient) as [solving the entire problem from within the web-browser](http://mechanicsacademy.com/demo/thinkbot-api/)!
 
-[corresponding ajax snippet]
+<a href="http://mechanicsacademy.com/demo/thinkbot-api/"><img class="img-responsive" src="{% static "img/docs/examples/ma-thinkbot-demo.png" %}" alt="thinkbot demo on Mechanics Academy"></a>
 
-[poing to thinkbot example on MA]
+This means that your scientific calculations can be shown to (or even edited, if you&#8217;d like by) anyone with a URL to your calculation. Imagine the possibilities for teaching and reproducible science! It&#8217;s this thought that motivated the design of thinkbot.
 
-Which means, any such scientific calculation can be shown to (or even edited, if you&#8217;d like that) by anyone with a URL.
+In order to interact with thinkbot in this manner, you need to be comfortable with in-browser JavaScript programming. You&#8217;ll still be hitting the same API endpoints as we did with curl, but now you&#8217;re going do be doing this via Ajax instead.
 
-And that&#8217;s cool.
+ I&#8217;ll sketch out the tasks below, and leave the actual implementation for you as an exercise. Remember, if you get stuck, you can always lookup [how the demonstration above was implemented](http://mechanicsacademy.com/assets/js/thinkbot-ajax.js).
 
-And if you&#8217;ve made it this far, congratulations! You now have a good overview of what thinkbot can do for you. For specific details, do look at the complete list of API [resources](#resources) and endpoints below. Remember thinkbot&#8217;s API and this documentation is a work in progress. If you have any questions or feedback, please [get in touch with me](mailto:support@thinkbot.net).
+First you need to define handy JavaScript helpers like the following which allow you to retrieve results from thinkbot.
+
+    jQuery.extend({
+         get_thinkbot: function(url) {
+             var response = null;
+             $.ajax({
+                 url: url,
+                 type: 'get',
+                 dataType: 'json',
+                 async: false,
+                 success: function(data) {
+                     response = data;
+                 }
+             });
+             return response;
+         }
+    });
+
+Once defined, you can use such a function to retrieve information about submitted code from thinkbot.
+
+    response = $.get_thinkbot("https://thinkbot.net/api/v1/jobs/job_id/");
+
+Then, you can get solution fields from within this response object via
+
+    results = response.results;
+
+and proceed to render them within the browser. In the example above, I&#8217;ve rendered VTK output from thinkbot using the [XTK library](http://goxtk.com/), but you can do whatever you want.
+
+And if you&#8217;ve made it this far, congratulations! You now have a good overview of what thinkbot can do for you. For specific details, do look at the complete list of API [resources](#resources) and endpoints below. Remember thinkbot&#8217;s API and this documentation are a work in progress. If you have any questions or feedback, please [get in touch with me](mailto:support@thinkbot.net).
