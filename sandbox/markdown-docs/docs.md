@@ -62,7 +62,7 @@ thinkbot happily responds with a bunch of information,
 
 including the fact that your script `completed` successfully and that it printed the number `3` to standard output. So there you have it, we submitted a simple calculation to thinkbot and it got back to us with the right answer.
 
-This first example gave  a quick taste for how it is to interact with thinkbot, but it was remarkably unexciting. But hang in there, things start getting much more exciting once you realise:
+This first example gave  a quick taste for how it is to interact with thinkbot, but I admit it was remarkably unexciting. But hang in there, things start getting much more exciting once you realise:
 
 * You can submit all kinds of sophisticated code to thinkbot involving various languages and scientific computing libraries, not just Python one-liners
 * thinkbot can return numerical results in a variety of formats, not just serialised JSON
