@@ -47,13 +47,12 @@
 }
 </code></pre>
 <p>including the fact that your script <code>completed</code> successfully and that it printed the number <code>3</code> to standard output. So there you have it, we submitted a simple calculation to thinkbot and it got back to us with the right answer.</p>
-<p>This first example gave  a quick taste for how it is to interact with thinkbot, but it was remarkably unexciting. But hang in there, things start getting much more exciting once you realise:</p>
+<p>This first example gave  a quick taste for how it is to interact with thinkbot, but I admit it was remarkably unexciting. But hang in there, things start getting much more exciting once you realise:</p>
 <ul>
-<li>You can submit all kinds of sophisticated code to thinkbot involving various languages and scientific computing libraries, not just Python one-liners</li>
-<li>thinkbot can return numerical results in a variety of formats, not just serialised JSON</li>
-<li>Any mechanism that can handle standard HTTP request/response can interact with thinkbot, not just curl. This includes <a href="https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB">specialised clients on iOS devices</a> and AJAX, as you&#8217;ll soon see.</li>
+<li><strong>You can submit all kinds of sophisticated code to thinkbot</strong> involving various languages and scientific computing libraries, not just Python one-liners</li>
+<li><strong>thinkbot can return numerical results in a variety of formats</strong>, not just serialised JSON</li>
+<li><strong>Any mechanism that can handle standard HTTP request/response can interact with thinkbot</strong>, not just curl on the command-line. This includes <a href="https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB">specialised clients on iOS devices</a> and AJAX, as you&#8217;ll soon see.</li>
 </ul>
-<p>So let's get on with it.</p>
 <h2>More realistic (and exciting!) usage</h2>
 <p>Now that I&#8217;ve whet your appetite, let&#8217;s move onto a more substantial example. This time, we&#8217;re going to solve a three-dimensional nonlinear elasticity problem using the finite element method. Once more, our code is going to be in Python, but now we&#8217;re going to submit a larger input program (<a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">hyperelasticity.py</a>) and we&#8217;re going to retrieve our solution in the <a href="http://www.vtk.org/">VTK format</a>. The execution of this Python code relies on the <a href="http://fenicsproject.org/">FEniCS Project</a>, which is one of the handy software environments that thinkbot offers.</p>
 <p>So let&#8217;s get started. <a href="https://thinkbot.net/assets/files/docs/examples/hyperelasticity.py">Download the Python script</a> we want to run to a convenient location and navigate to it in your terminal. To begin with, let&#8217;s again use curl to submit this code to thinkbot.</p>

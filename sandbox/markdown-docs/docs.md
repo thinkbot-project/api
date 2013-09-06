@@ -64,11 +64,9 @@ including the fact that your script `completed` successfully and that it printed
 
 This first example gave  a quick taste for how it is to interact with thinkbot, but I admit it was remarkably unexciting. But hang in there, things start getting much more exciting once you realise:
 
-* You can submit all kinds of sophisticated code to thinkbot involving various languages and scientific computing libraries, not just Python one-liners
-* thinkbot can return numerical results in a variety of formats, not just serialised JSON
-* Any mechanism that can handle standard HTTP request/response can interact with thinkbot, not just curl. This includes [specialised clients on iOS devices](https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB) and AJAX, as you&#8217;ll soon see.
-
-So let's get on with it.
+* **You can submit all kinds of sophisticated code to thinkbot** involving various languages and scientific computing libraries, not just Python one-liners
+* **thinkbot can return numerical results in a variety of formats**, not just serialised JSON
+* **Any mechanism that can handle standard HTTP request/response can interact with thinkbot**, not just curl on the command-line. This includes [specialised clients on iOS devices](https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB) and AJAX, as you&#8217;ll soon see.
 
 ## More realistic (and exciting!) usage
 
