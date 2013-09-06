@@ -3,20 +3,6 @@ upstream compute_service {
 }
 
 server {
-  server_name _;
-  server_name_in_redirect off;
-
-  listen 80 default_server;
-
-  access_log off;
-  error_log off;
-
-  location / {
-    deny all;
-  }
-}
-
-server {
   server_name          www.thinkbot.net;
 
   ssl_certificate      /home/ubuntu/sites/thinkbot.net/config/ssl/thinkbot.net.crt;
