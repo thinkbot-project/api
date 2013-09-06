@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 ## Getting started with thinkbot
 
 thinkbot&#8217;s API is organised as a [set of resources](#resources) that can be manipulated with well-defined requests to the service. All requests to thinkbot are required to be over SSL and begin with:
@@ -64,9 +66,9 @@ including the fact that your script `completed` successfully and that it printed
 
 This first example gave  a quick taste for how it is to interact with thinkbot, but I admit it was remarkably unexciting. But hang in there, things start getting much more exciting once you realise:
 
-* **You can submit all kinds of sophisticated code to thinkbot** involving various languages and scientific computing libraries, not just Python one-liners
-* **thinkbot can return numerical results in a variety of formats**, not just serialised JSON
-* **Any mechanism that can handle standard HTTP request/response can interact with thinkbot**, not just curl on the command-line. This includes [specialised clients on iOS devices](https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB) and AJAX, as you&#8217;ll soon see.
+1. **You can submit all kinds of sophisticated code to thinkbot** involving various languages and scientific computing libraries, not just Python one-liners
+2. **thinkbot can return numerical results in a variety of formats**, not just serialised JSON
+3. **Any mechanism that can handle standard HTTP request/response can interact with thinkbot**, not just curl on the command-line. This includes [specialised clients on iOS devices](https://plus.google.com/100382636415340600164/posts/j6SwiVP2UJB) and AJAX, as you&#8217;ll soon see.
 
 ## More realistic (and exciting!) usage
 
@@ -105,7 +107,9 @@ Voil&agrave;! thinkbot has successfully `completed` running our code and the res
     curl -X GET -O https://thinkbot.net/results/job_id/u.vtk \
          -H "Authorization:  Token {{ user_token }}"
 
-If you want to admire these beautiful results locally, you need a visualisation program like [Paraview](http://www.paraview.org/).
+If you want to admire these beautiful results locally, you need a visualisation program like [Paraview](http://www.paraview.org/). If you setup such a program and open `u.vtk`, you&#8217;ll be greeted with the following, which you can play with and analyse.
+
+<img class="featurette-image img-responsive" src="{% static "img/docs/examples/hyperelasticity.png" %}" alt="Sample thinkbot output visualised in external software">
 
 Using curl, thinkbot and Paraview is a fine way of solving this problem and visualising the results, but it isn&#8217;t as cool
 

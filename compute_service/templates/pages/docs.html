@@ -1,5 +1,4 @@
 {% extends "layouts/narrow.html" %}
-{% load staticfiles %}
 
 {% block title %}API Documentation &mdash; thinkbot{% endblock %}
 
@@ -22,7 +21,7 @@
 
 {% include 'pages/quickstart.html' %}
 
-<h2 id="resources">All Resources and Endpoints</h2>
+<h2 id="resources">All resources and API endpoints</h2>
 
 <h3 id="users">Users</h3>
 <div class="table-responsive">
@@ -60,7 +59,7 @@
 </div>
 
 <h3 id="environments">Environments</h3>
-<p>In addition to the <a href="#standard-environments">standard environments</a> that thinkbot comes prebuilt with, you can define and use your own software environments.</p>
+<p>Out of the box, thinkbot comes with support for general code written in Python, R and Octave as well as special scientific computing environments such as the <a href="http://fenicsproject.org/">FEniCS Project</a>. If you want to carry out other kinds of scientific computation, you will need to define your own environments. Doing so is straightforward with the following endpoints API endpoints.</p>
 <div class="table-responsive">
   <table class="table">
     <thead>
