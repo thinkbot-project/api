@@ -4,9 +4,8 @@
 
 {% block narrow_content %}
 <h1>Dashboard</h1>
-
 <ul id="dashboard_tabs" class="nav nav-tabs">
-  <li class="active"><a href="#api" data-toggle="tab">API Credentials</a></li>
+  <li class="active"><a href="#api" data-toggle="tab">API Access</a></li>
   <li><a href="#jobs" data-toggle="tab">Job History</a></li>
   <li><a href="#account" data-toggle="tab">Account Details</a></li>
 </ul>
@@ -14,8 +13,13 @@
 <div id="dashboard_tabs" class="tab-content">
 
   <div class="tab-pane fade in active" id="api">
-    <h2>API Quickstart</h2>
-    <p>Your Authorization Token for the following REST requests is: <strong>{{ user_token }}</strong></p>
+    <h2>Using thinkbot</h2>
+    <p>In general, you interact with thinkbot not through this website, but through a programmatic interface (called an API). thinkbot has <a href="{% url 'docs' %}">some great documentation</a> to help you get going with its API.</p>
+    <p>You&#8217;ll need the following authorisation token to authenticate your requests as you use the thinkbot API:</p>
+    <p class="lead"><strong>{{ user_token }}</strong></p>
+    <p>The documentation will show you how to do this, and a whole lot more. So do <a href="{% url 'docs' %}">go have a look</a>!</p>
+    <p>Remember thinkbot&#8217;s API and its documentation are a work in progress. If you have any questions or feedback, please <a href="mailto:support@thinkbot.net">get in touch with me</a>.</p>
+    <p>Happy coding!</p>
   </div>
 
   <div class="tab-pane fade" id="jobs">
