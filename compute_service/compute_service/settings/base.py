@@ -57,9 +57,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_ROOT = root("media")
+MEDIA_ROOT = root("results")
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/results/'
 
 STATIC_ROOT = root("collected_assets")
 
