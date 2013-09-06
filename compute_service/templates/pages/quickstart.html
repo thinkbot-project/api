@@ -63,12 +63,12 @@
     -F "code=&lt;hyperelasticity.py" \
     -F "variables=u.vtk"
 </code></pre>
-<p>Notice a few things. We defined the environment this code relies on (FEniCS Project 1.1), we take the code from our <code>hyperelasticity.py</code> file, and we request the output variable <code>u</code> in VTK format.</p>
-<p>Again, thinkbot immediately returns with a bunch of JSON-encoded information about this code you just submitted. But this time you know what you&#8217;re looking for. Grab the URL attribute and check on the status of this code.</p>
+<p>Notice a few things. We&#8217;ve now defined that the environment this code relies on is <code>fenics11</code> (FEniCS Project 1.1), that we intend to submit code from our <code>hyperelasticity.py</code> file, and that we&#8217;d like to request the output variable <code>u</code> (defined in our code) in VTK format.</p>
+<p>Again, thinkbot immediately returns with a bunch of JSON-encoded information about the code we just <code>submitted</code>. But this time you know what to look for. Grab the <code>url</code> attribute from the response and check on the status of our submission.</p>
 <pre><code>curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
      -H "Authorization:  Token {{ user_token }}"
 </code></pre>
-<p>If everything went well, you&#8217;ll see:</p>
+<p>If everything went well, you&#8217;ll see the following. If the status indicates that your code is still <code>running</code>, wait for a few seconds and retry the <code>GET</code> request.</p>
 <pre><code>{
     "url": "https://thinkbot.net/api/v1/jobs/job_id/",
     "status": "completed",
@@ -79,7 +79,7 @@
     .
 }
 </code></pre>
-<p>(If the status indicates that your code is still <code>running</code>, wait for a few seconds and retry the <code>GET</code> request.) You can now head on over to the results URL, download the results of the computation.</p>
+<p>Voil&agrave;! thinkbot has successfully <code>completed</code> running our code and the results we asked for are waiting for us in the <code>results</code> URL. You can now head over to this URL and download the results of the computation.</p>
 <pre><code>curl -X GET -O https://thinkbot.net/results/job_id/u.vtk \
      -H "Authorization:  Token {{ user_token }}"
 </code></pre>

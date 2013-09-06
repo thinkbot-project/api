@@ -81,14 +81,14 @@ So let&#8217;s get started. [Download the Python script](https://thinkbot.net/as
         -F "code=<hyperelasticity.py" \
         -F "variables=u.vtk"
 
-Notice a few things. We defined the environment this code relies on (FEniCS Project 1.1), we take the code from our `hyperelasticity.py` file, and we request the output variable `u` in VTK format.
+Notice a few things. We&#8217;ve now defined that the environment this code relies on is `fenics11` (FEniCS Project 1.1), that we intend to submit code from our `hyperelasticity.py` file, and that we&#8217;d like to request the output variable `u` (defined in our code) in VTK format.
 
-Again, thinkbot immediately returns with a bunch of JSON-encoded information about this code you just submitted. But this time you know what you&#8217;re looking for. Grab the URL attribute and check on the status of this code.
+Again, thinkbot immediately returns with a bunch of JSON-encoded information about the code we just `submitted`. But this time you know what to look for. Grab the `url` attribute from the response and check on the status of our submission.
 
     curl -X GET https://thinkbot.net/api/v1/jobs/job_id/ \
          -H "Authorization:  Token {{ user_token }}"
 
-If everything went well, you&#8217;ll see:
+If everything went well, you&#8217;ll see the following. If the status indicates that your code is still `running`, wait for a few seconds and retry the `GET` request.
 
     {
         "url": "https://thinkbot.net/api/v1/jobs/job_id/",
@@ -100,11 +100,10 @@ If everything went well, you&#8217;ll see:
         .
     }
 
-(If the status indicates that your code is still `running`, wait for a few seconds and retry the `GET` request.) You can now head on over to the results URL, download the results of the computation.
+Voil&agrave;! thinkbot has successfully `completed` running our code and the results we asked for are waiting for us in the `results` URL. You can now head on over to this URL and download the results of the computation.
 
     curl -X GET -O https://thinkbot.net/results/job_id/u.vtk \
          -H "Authorization:  Token {{ user_token }}"
-
 
 If you want to admire these beautiful results locally, you need a visualisation program like [Paraview](http://www.paraview.org/).
 
