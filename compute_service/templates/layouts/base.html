@@ -41,7 +41,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'docs' %}">Documentation</a></li>
-            <li><a href="mailto:support@thinkbot.net?subject=I have a question">Help</a></li>
+            <li><a href="mailto:support@thinkbot.net?subject=I%20have%20a%20question">Help</a></li>
 	    {% if not user.is_authenticated %}
 	    <li><a href="{% url 'auth_login' %}">Login</a></li>
 	    {% else %}
@@ -94,5 +94,3 @@
 
   </body>
 </html>
-
-
