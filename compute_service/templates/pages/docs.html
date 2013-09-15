@@ -2,13 +2,6 @@
 
 {% block title %}API Documentation &mdash; thinkbot{% endblock %}
 
-
-{% if user.is_authenticated %}
-<div class="alert alert-success">
-  Welcome {{ user.username }}. Your Authorization Token for the following REST requests is: <strong>{{ user_token }}</strong>.
-</div>
-{% endif %}
-
 {% block narrow_content %}
 <h1>thinkbot API <small>v1.0</small></h1>
 
