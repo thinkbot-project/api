@@ -4,25 +4,12 @@
 
 {% block narrow_content %}
 <h1>About thinkbot</h1>
-<ul>
-  <li>The philosophy behind the service</li>
-  <li>Diagram to illustrate it</li>
-  <li>Replace thinkbot block in diagram with a cute robot instead</li>
-  <li>Hammer home educational uses from grants, MA about</li>
-  <li>How many hours have you, or your students or your employees lost deal with exotic compiler flags and incompatible library versions</li>
-  <li>More about me&mdash;formally trained in science, general install guru, working on websites since forever, seen enough pitfalls students fall into</li>
-  <li>Gallery of interesting uses</li>
-</ul>
+<p>You don&#8217;t need another computer to administer. You need seamless access to powerful tools when you&#8217;re pondering important questions.</p>
+<p>You don&#8217;t need another paper behind a journal&#8217;s paywall. You need a way to easily share your science with everyone.</p>
+<p>Computational science is hard. I&#8217;m building thinkbot to make things easier.</p>
 {% if not user.is_authenticated %}
 <p>Like how all this sounds?</p>
 <p><a class="btn btn-success btn-lg" href="{% url 'registration_register' %}">Try thinkbot</a></p>
 {% endif %}
-
-<h1>Partner organisations</h1>
-<p>These guys have been very gracious with their time and encouragement during the development of thinkbot. Thank you all!</p>
-Mechanics Academy, Studix, Orobix, Still-water supercomputing, Umich, UiO etc.
-<ul>
-  <li>Quotes from other people</li>
-</ul>
 {% endblock %}
 
