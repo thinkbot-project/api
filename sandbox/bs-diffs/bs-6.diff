@@ -1,0 +1,131 @@
+diff --git a/less/buttons.less b/less/buttons.less
+index 40511ab..5831533 100644
+--- a/less/buttons.less
++++ b/less/buttons.less
+@@ -11,6 +11,9 @@
+   display: inline-block;
+   padding: @padding-base-vertical @padding-base-horizontal;
+   margin-bottom: 0; // For input.btn
++  font-family: @font-family-sans-serif;
++  text-transform: uppercase;
++  letter-spacing: 1px;
+   font-size: @font-size-base;
+   font-weight: @btn-font-weight;
+   line-height: @line-height-base;
+diff --git a/less/navbar.less b/less/navbar.less
+index d054b40..4a8a38c 100644
+--- a/less/navbar.less
++++ b/less/navbar.less
+@@ -9,6 +9,9 @@
+ // other navbar variations.
+ 
+ .navbar {
++  font-family: @font-family-sans-serif;
++  text-transform: uppercase;
++  letter-spacing: 1px;
+   position: relative;
+   z-index: @zindex-navbar;
+   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
+diff --git a/less/tables.less b/less/tables.less
+index f9f0041..8cf370a 100644
+--- a/less/tables.less
++++ b/less/tables.less
+@@ -43,6 +43,7 @@ th {
+     > tr:first-child {
+       > th,
+       > td {
++        font-family: @headings-font-family;
+         border-top: 0;
+       }
+     }
+diff --git a/less/type.less b/less/type.less
+index 1e4ff9d..075c99d 100644
+--- a/less/type.less
++++ b/less/type.less
+@@ -7,12 +7,12 @@
+ // -------------------------
+ 
+ p {
+-  margin: 0 0 (@line-height-computed / 2);
++  margin: 0 0 (@line-height-computed / 1.35);
+ }
+ .lead {
+-  margin-bottom: @line-height-computed;
++  margin-bottom: (@line-height-computed * 0.9);
+   font-size: (@font-size-base * 1.15);
+-  font-weight: 200;
++  font-weight: 300;
+   line-height: 1.4;
+ 
+   @media (min-width: @screen-sm-min) {
+@@ -93,7 +93,7 @@ h1,
+ h2,
+ h3 {
+   margin-top: @line-height-computed;
+-  margin-bottom: (@line-height-computed / 2);
++  margin-bottom: (@line-height-computed / 1.5);
+ 
+   small {
+     font-size: 65%;
+diff --git a/less/variables.less b/less/variables.less
+index 1a998b9..8bbc0b4 100644
+--- a/less/variables.less
++++ b/less/variables.less
+@@ -39,12 +39,12 @@
+ // Typography
+ // -------------------------
+ 
+-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
++@font-family-sans-serif:  "Lato", sans-serif;
++@font-family-serif:       "Merriweather", Georgia, serif;
+ @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
+-@font-family-base:        @font-family-sans-serif;
++@font-family-base:        @font-family-serif;
+ 
+-@font-size-base:          14px;
++@font-size-base:          16px;
+ @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
+ @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
+ 
+@@ -55,11 +55,11 @@
+ @font-size-h5:            @font-size-base;
+ @font-size-h6:            ceil(@font-size-base * 0.85); // ~12px
+ 
+-@line-height-base:        1.428571429; // 20/14
++@line-height-base:        1.6;
+ @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+ 
+-@headings-font-family:    @font-family-base;
+-@headings-font-weight:    500;
++@headings-font-family:    @font-family-sans-serif;
++@headings-font-weight:    400;
+ @headings-line-height:    1.1;
+ @headings-color:          inherit;
+ 
+@@ -67,7 +67,7 @@
+ // Iconography
+ // -------------------------
+ 
+-@icon-font-path:          "../fonts/";
++@icon-font-path:          "../../fonts/";
+ @icon-font-name:          "glyphicons-halflings-regular";
+ 
+ 
+@@ -261,12 +261,12 @@
+ @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+ 
+ @navbar-default-color:             #777;
+-@navbar-default-bg:                #f8f8f8;
+-@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
++@navbar-default-bg:                #fff;
++@navbar-default-border:            #fff;
+ 
+ // Navbar links
+-@navbar-default-link-color:                #777;
+-@navbar-default-link-hover-color:          #333;
++@navbar-default-link-color:                @link-color;
++@navbar-default-link-hover-color:          @link-hover-color;
+ @navbar-default-link-hover-bg:             transparent;
+ @navbar-default-link-active-color:         #555;
+ @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
