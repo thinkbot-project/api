@@ -94,6 +94,10 @@ MIDDLEWARE_CLASSES = (
 
 CORS_ORIGIN_WHITELIST = (
     'mechanicsacademy.com',
+    'dev.studix.no',
+    'author.studix.no',
+    'studix.com',
+    'www.studix.com',
 )
 
 CORS_ORIGIN_REGEX_WHITELIST = (
