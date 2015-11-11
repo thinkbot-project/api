@@ -16,7 +16,7 @@ django-secure==1.0
 django-registration==1.0
 djangorestframework==2.3.7
 djrill==0.6.0
-kombu==2.5.14
+kombu==3.0.26
 paramiko==1.11.0
 psycopg2==2.5.1
 pycrypto==2.6
