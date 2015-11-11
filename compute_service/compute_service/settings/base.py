@@ -20,10 +20,10 @@ def get_env_variable(var_name):
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-MQ_USER = get_env_variable('EF_MQ_USER')
-MQ_PASSWORD = get_env_variable('EF_MQ_PASSWORD')
-MQ_HOST = get_env_variable('EF_MQ_HOST')
-MQ_VHOST = get_env_variable('EF_MQ_VHOST')
+MQ_USER = get_env_variable('TB_MQ_USER')
+MQ_PASSWORD = get_env_variable('TB_MQ_PASSWORD')
+MQ_HOST = get_env_variable('TB_MQ_HOST')
+MQ_VHOST = get_env_variable('TB_MQ_VHOST')
 
 BASE_URL = 'https://' + get_env_variable('TB_HOST')
 
