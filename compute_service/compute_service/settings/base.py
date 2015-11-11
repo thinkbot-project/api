@@ -1,8 +1,6 @@
 from os import environ
 from os.path import join, abspath, dirname
 
-import djcelery
-
 from django.core.exceptions import ImproperlyConfigured
 
 
@@ -127,7 +125,6 @@ THIRD_PARTY_APPS = (
     'south',
     'rest_framework',
     'rest_framework.authtoken',
-    'djcelery',
     'corsheaders',
     'registration',
     'djrill',
@@ -140,8 +137,6 @@ SECURE_BROWSER_XSS_FILTER = True
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
-
-djcelery.setup_loader()
 
 ACCOUNT_ACTIVATION_DAYS = 10
 LOGIN_URL = 'auth_login'
